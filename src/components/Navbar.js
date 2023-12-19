@@ -36,8 +36,8 @@ const Img = styled.img`
 `;
 
 const Me = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   padding: 20px;
 `;
