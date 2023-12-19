@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.App {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bubbles-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1; /* Set a negative z-index to place it behind other content */
+}
+
+.bubbles-background .bubble {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: animate 4s linear infinite;
+  transform-origin: center;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.35);
+  background-image: linear-gradient(43deg, #4159d064 0%, #e06fd814 40%, #ffd48423 100%);
+}
+
+.bubbles-background .bubble:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.25) translate(-70%, -70%);
+  background: radial-gradient(#ffffffc2, transparent);
+  border-radius: 50%;
+}
+
+  @keyframes animate {
+    0% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    99% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1200%);
+      opacity: 0;
+    }
+  }
+  
