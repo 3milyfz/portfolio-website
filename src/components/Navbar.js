@@ -27,7 +27,6 @@ const List = styled.ul`
   align-items: center;
   gap: 40px;
   list-style: none;
-  padding: 20px;
 `;
 
 const Img = styled.img`
