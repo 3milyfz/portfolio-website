@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 import Experience from './components/Experience';
+import Projects from './components/Projects';
 
 function App() {
   const [bubbles, setBubbles] = useState([]);
@@ -44,6 +45,7 @@ function App() {
       </section>
       <Home />
       <Experience/>
+      <Projects/>
     </div>
   );
 }

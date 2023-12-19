@@ -42,6 +42,7 @@ const Right = styled.div`
 `;
 
 const ListItem = styled.li`
+  font-size: large;
   margin-bottom: 10px; /* Add a margin to create a gap between list items */
 `;
 
@@ -94,7 +95,7 @@ const Experience = () => {
         <Right>
           <ul>
             <ListItem>
-              Developed <strong>Azure</strong> Functions in <strong>TypeScript/JavaScript</strong> to seamlessly connect with external APIs, streamlining data retrieval processes and enhancing system integration.
+              Developed <strong>Azure</strong> Functions in <strong>TypeScript</strong> to seamlessly connect with external APIs, streamlining data retrieval processes and enhancing system integration.
             </ListItem>
             <ListItem>
               Integrated automated testing suites using <strong>Jest</strong>, effectively mitigating software bugs and elevating overall software functionality.
