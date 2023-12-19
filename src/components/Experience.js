@@ -11,6 +11,7 @@ const Section = styled.div`
 
   @media only screen and (max-width: 768px) {
     height: auto;
+    min-height: 100vh;
   }
 `;
 
@@ -47,6 +48,10 @@ const Right = styled.div`
   display: flex;
   flex-direction: column;
   height: fit-content;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ListItem = styled.li`

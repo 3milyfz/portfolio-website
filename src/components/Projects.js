@@ -10,9 +10,10 @@ const Section = styled.div`
   gap: 40px;
 
   @media only screen and (max-width: 768px) {
-    height: 150vh;
+    height: auto;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
   }
 `;
 
