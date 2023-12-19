@@ -6,7 +6,7 @@ const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center; /* Align vertically centered */
-  height: 130vh; /* Set a height to center vertically on the viewport */
+  height: 140vh; /* Set a height to center vertically on the viewport */
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
@@ -18,7 +18,7 @@ const Section = styled.div`
 const Card = styled.div`
   display: flex;
   flex-direction: row;
-  width: 92%;
+  width: 80%;
   background-color: rgb(255 255 255 / 8%);
   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
   backdrop-filter: blur(30px);
