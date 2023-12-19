@@ -10,7 +10,7 @@ const Section = styled.div`
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
-    height: auto;
+    height: fit-content;
     min-height: 100vh;
   }
 `;
@@ -27,7 +27,7 @@ const Card = styled.div`
   height: fit-content;
 
   @media only screen and (max-width: 768px) {
-    width: 70%;
+    width: 80%;
   }
 `;
 
