@@ -71,7 +71,7 @@ const Experience = () => {
         <Right>
           <ul>
             <ListItem>
-              Implementing interactive data visualization components in
+              Implementing interactive data visualization components in 
               <strong>React</strong>, enhancing the presentation and analysis of
               complex neurological data.
             </ListItem>
