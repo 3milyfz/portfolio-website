@@ -97,7 +97,7 @@ const Experience = () => {
               Collaborating with a cross-functional team of UX/UI designers and developers to integrate <strong>React</strong> front-end and <strong>Express.js</strong>-based back-end components.
             </ListItem>
             <ListItem>
-              Implementing <strong>Agile</strong> development methodologies and utilized <strong>Scrum</strong> framework, resulting in an increase in productivity by 30\% and timely delivery of high-quality tickets.
+              Implementing <strong>Agile</strong> development methodologies and utilized <strong>Scrum</strong> framework, resulting in an increase in productivity by 30% and timely delivery of high-quality tickets.
             </ListItem>
           </ul>
         </Right>
