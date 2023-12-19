@@ -87,7 +87,7 @@ const Experience = () => {
       </Card>
       <Card>
         <Left>
-          <h1>Open Source Software Developer</h1>
+          <h1>Open Source Developer</h1>
           <h2>UofT Blueprint</h2>
           <h4>Sep. 2023 - Present</h4>
         </Left>
