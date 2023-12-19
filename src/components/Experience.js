@@ -11,7 +11,7 @@ const Section = styled.div`
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
-    min-height: 100vh;
+    min-height: 150vh;
   }
 `;
 
@@ -21,7 +21,7 @@ const Card = styled.div`
   width: 92%;
   background-color: rgb(255 255 255 / 5%);
   box-shadow: 0 0 5px rgb(0 0 0 / 15%);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
   border-radius: 10px;
   padding: 20px;
   height: fit-content;

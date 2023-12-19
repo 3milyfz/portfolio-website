@@ -22,7 +22,7 @@ const Title = styled.h1`
     text-align: center;
     align-self: center;
     font-size: 70px;
-    padding:  150px 0 20px 50px;
+    padding:  100px 50px;
   }
 `;
 
@@ -34,6 +34,7 @@ const Text = styled.p`
   @media only screen and (max-width: 768px) {
     text-align: center;
     align-self: center;
+    font-size: 20px;
   }
 `;
 
