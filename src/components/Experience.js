@@ -94,10 +94,12 @@ const Experience = () => {
         <Right>
           <ul>
             <ListItem>
-              Collaborating with a cross-functional team of UX/UI designers and developers to integrate <strong>React</strong> front-end and <strong>Express.js</strong>-based back-end components.
+              Collaborating with a cross-functional team of UX/UI designers and developers to 
+              integrate <strong>React</strong> front-end and <strong>Express.js</strong>-based back-end components.
             </ListItem>
             <ListItem>
-              Implementing <strong>Agile</strong> development methodologies and utilized <strong>Scrum</strong> framework, resulting in an increase in productivity by 30% and timely delivery of high-quality tickets.
+              Implementing <strong>Agile</strong> development methodologies and utilizing <strong>Scrum</strong> 
+              framework to increase productivity and promote timely delivery of high-quality tickets.
             </ListItem>
           </ul>
         </Right>
@@ -111,13 +113,16 @@ const Experience = () => {
         <Right>
           <ul>
             <ListItem>
-              Developed <strong>Azure</strong> Functions in <strong>TypeScript</strong> to seamlessly connect with external APIs, streamlining data retrieval processes and enhancing system integration.
+              Developed <strong>Azure</strong> Functions in <strong>TypeScript</strong> to seamlessly connect 
+              with external APIs, streamlining data retrieval processes and enhancing system integration.
             </ListItem>
             <ListItem>
-              Integrated automated testing suites using <strong>Jest</strong>, effectively mitigating software bugs and elevating overall software functionality.
+              Integrated automated testing suites using <strong>Jest</strong>, effectively mitigating software 
+              bugs and elevating overall software functionality.
             </ListItem>
             <ListItem>
-              Created scalable <strong>Rest APIs</strong>, employing <strong>Postman</strong> for comprehensive testing to ensure seamless integration.
+              Created scalable <strong>Rest APIs</strong>, employing <strong>Postman</strong> for comprehensive 
+              testing to ensure seamless integration.
             </ListItem>
           </ul>
         </Right>
