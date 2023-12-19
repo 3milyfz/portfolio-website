@@ -18,7 +18,7 @@ const Section = styled.div`
 const Card = styled.div`
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 90%;
   background-color: rgb(255 255 255 / 8%);
   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
   backdrop-filter: blur(30px);
