@@ -6,7 +6,7 @@ const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center; /* Align vertically centered */
-  height: 140vh; /* Set a height to center vertically on the viewport */
+  height: 100vh; /* Set a height to center vertically on the viewport */
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
