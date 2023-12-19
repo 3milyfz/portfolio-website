@@ -8,6 +8,10 @@ const Section = styled.div`
   align-items: center; /* Align vertically centered */
   height: 100vh; /* Set a height to center vertically on the viewport */
   gap: 20px;
+
+  @media only screen and (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const Card = styled.div`
@@ -20,6 +24,10 @@ const Card = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: fit-content;
+
+  @media only screen and (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const Left = styled.div`

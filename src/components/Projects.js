@@ -8,6 +8,12 @@ const Section = styled.div`
   align-items: center; /* Align vertically centered */
   height: 100vh; /* Set a height to center vertically on the viewport */
   gap: 40px;
+
+  @media only screen and (max-width: 768px) {
+    height: 150vh;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Card = styled.div`
@@ -25,6 +31,10 @@ const Card = styled.div`
   align-self: center;
   gap: 20px;
   text-align: center;
+
+  @media only screen and (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const Img = styled.img`
