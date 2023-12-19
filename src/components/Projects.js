@@ -13,7 +13,7 @@ const Section = styled.div`
     height: fit-content;
     flex-direction: column;
     align-items: center;
-    min-height: 150vh;
+    min-height: 100vh;
   }
 `;
 
@@ -35,6 +35,9 @@ const Card = styled.div`
 
   @media only screen and (max-width: 768px) {
     width: 80%;
+    background-color: rgb(255 255 255 / 5%);
+    box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+    backdrop-filter: blur(30px);
   }
 `;
 

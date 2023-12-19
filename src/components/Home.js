@@ -22,7 +22,8 @@ const Title = styled.h1`
     text-align: center;
     align-self: center;
     font-size: 70px;
-    padding:  100px 50px;
+    padding: 100px 50px 20px 50px;
+
   }
 `;
 
