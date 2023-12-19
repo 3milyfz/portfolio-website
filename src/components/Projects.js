@@ -35,7 +35,7 @@ const Card = styled.div`
 
   @media only screen and (max-width: 768px) {
     width: 80%;
-    background-color: rgb(255 255 255 / 15%);
+    background-color: rgb(255 255 255 / 8%);
     box-shadow: 0 0 5px rgb(0 0 0 / 30%);
     backdrop-filter: blur(60px);
   }
