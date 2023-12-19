@@ -13,7 +13,7 @@ const Section = styled.div`
     height: fit-content;
     flex-direction: column;
     align-items: center;
-    min-height: 110vh;
+    min-height: 120vh;
   }
 `;
 
