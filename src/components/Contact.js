@@ -72,6 +72,12 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 20px;
   padding: 10px;
+
+  @media only screen and (max-width: 768px) {
+    background-color: rgb(255 255 255 / 15%);
+    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+    backdrop-filter: blur(60px);
+  }
 `;
 
 const P = styled.p`

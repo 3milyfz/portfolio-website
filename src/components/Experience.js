@@ -30,7 +30,7 @@ const Card = styled.div`
     width: 80%;
     background-color: rgb(255 255 255 / 15%);
     box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(60px);
   }
 `;
 
