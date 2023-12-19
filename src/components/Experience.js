@@ -11,7 +11,7 @@ const Section = styled.div`
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
-    min-height: 150vh;
+    min-height: 130vh;
   }
 `;
 
