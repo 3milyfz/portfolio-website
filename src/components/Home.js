@@ -16,7 +16,7 @@ const Section = styled.div`
 const Title = styled.h1`
   font-size: 150px;
   color: rgb(210, 212, 199);
-  padding: 170px 0 20px 50px;
+  padding: 160px 0 20px 50px;
 
   @media only screen and (max-width: 768px) {
     text-align: center;
