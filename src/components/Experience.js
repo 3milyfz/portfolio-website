@@ -97,8 +97,7 @@ const Experience = () => {
               integrate <strong>React</strong> front-end and <strong>Express.js</strong>-based back-end components.
             </ListItem>
             <ListItem>
-              Implementing <strong>Agile</strong> development methodologies and utilizing <strong>Scrum</strong> 
-               framework to increase productivity and promote timely delivery of high-quality tickets.
+              Implementing <strong>Agile</strong> development methodologies and utilizing <strong>Scrum</strong> framework to increase productivity and promote timely delivery of high-quality tickets.
             </ListItem>
           </ul>
         </Right>
