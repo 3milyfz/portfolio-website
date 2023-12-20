@@ -98,7 +98,7 @@ const Experience = () => {
             </ListItem>
             <ListItem>
               Implementing <strong>Agile</strong> development methodologies and utilizing <strong>Scrum</strong> 
-              framework to increase productivity and promote timely delivery of high-quality tickets.
+               framework to increase productivity and promote timely delivery of high-quality tickets.
             </ListItem>
           </ul>
         </Right>
@@ -112,7 +112,7 @@ const Experience = () => {
         <Right>
           <ul>
             <ListItem>
-              Developed <strong>Azure</strong> Functions in <strong>TypeScript</strong> to seamlessly connect 
+              Developed <strong>Azure</strong> functions in <strong>TypeScript</strong> to seamlessly connect 
               with external APIs, streamlining data retrieval processes and enhancing system integration.
             </ListItem>
             <ListItem>
