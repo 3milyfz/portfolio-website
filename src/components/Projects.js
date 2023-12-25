@@ -84,7 +84,7 @@ const Projects = () => {
         };
       }
     });
-  }, []);
+  }, [cardRefs]);
 
   return (
     <Section>

@@ -95,7 +95,7 @@ const Experience = () => {
         };
       }
     });
-  }, []);
+  }, [cardRefs]);
 
   return (
     <Section>
