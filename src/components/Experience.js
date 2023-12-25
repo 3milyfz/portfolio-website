@@ -28,7 +28,6 @@ const Card = styled.div`
 
   @media only screen and (max-width: 768px) {
     width: 80%;
-    backdrop-filter: blur(5px);
   }
 `;
 
