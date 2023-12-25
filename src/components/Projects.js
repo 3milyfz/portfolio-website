@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 const Section = styled.div`
@@ -52,7 +52,8 @@ const P = styled.p`
 `;
 
 const Projects = () => {
-  const cardRefs = useMemo(() => [useRef(null), useRef(null)], []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const cardRefs = [useRef(null), useRef(null)];
   const [isVisible, setIsVisible] = useState([false, false]);
 
   useEffect(() => {
