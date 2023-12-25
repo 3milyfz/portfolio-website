@@ -72,6 +72,10 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 20px;
   padding: 10px;
+
+  @media only screen and (max-width: 768px) {
+    filter: blur(15px);
+  }
 `;
 
 const P = styled.p`
