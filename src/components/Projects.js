@@ -21,8 +21,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 42%;
-  background-color: rgb(255 255 255 / 8%);
-  box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+  background-color: rgba(255, 255, 255, 0.08); /* Use RGBA with opacity */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Use RGBA with opacity */
   backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 20px;
