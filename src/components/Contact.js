@@ -64,7 +64,7 @@ const TextArea = styled.textarea`
 const Button = styled.button`
   background-color: rgb(255 255 255 / 8%);
   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(15px);
   font-size: x-large;
   font-family:'Google Sans', sans-serif;
   color: white;
@@ -72,12 +72,6 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 20px;
   padding: 10px;
-
-  @media only screen and (max-width: 768px) {
-    background-color: rgb(255 255 255 / 15%);
-    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-    backdrop-filter: blur(60px);
-  }
 `;
 
 const P = styled.p`

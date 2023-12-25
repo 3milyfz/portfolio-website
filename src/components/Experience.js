@@ -21,16 +21,13 @@ const Card = styled.div`
   width: 90%;
   background-color: rgb(255 255 255 / 8%);
   box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 20px;
   height: fit-content;
 
   @media only screen and (max-width: 768px) {
     width: 80%;
-    background-color: rgb(255 255 255 / 8%);
-    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-    backdrop-filter: blur(60px);
   }
 `;
 
