@@ -52,7 +52,7 @@ const P = styled.p`
 `;
 
 const Projects = () => {
-  const cardRefs = [useRef(null), useRef(null)];
+  const cardRefs = useMemo(() => [useRef(null), useRef(null)], []);
   const [isVisible, setIsVisible] = useState([false, false]);
 
   useEffect(() => {

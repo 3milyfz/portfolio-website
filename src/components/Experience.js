@@ -63,7 +63,7 @@ const ListItem = styled.li`
 `;
 
 const Experience = () => {
-  const cardRefs = [useRef(null), useRef(null), useRef(null)];
+  const cardRefs = useMemo(() => [useRef(null), useRef(null), useRef(null)], []);
   const [isVisible, setIsVisible] = useState([false, false, false]);
 
   useEffect(() => {
