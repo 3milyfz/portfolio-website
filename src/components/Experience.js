@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 const Section = styled.div`
@@ -25,6 +25,9 @@ const Card = styled.div`
   border-radius: 20px;
   padding: 20px;
   height: fit-content;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
+  transition: opacity 0.5s ease, transform 0.5s ease;
 
   @media only screen and (max-width: 768px) {
     width: 80%;
@@ -60,9 +63,43 @@ const ListItem = styled.li`
 `;
 
 const Experience = () => {
+  const cardRefs = [useRef(null), useRef(null), useRef(null)];
+  const [isVisible, setIsVisible] = useState([false, false, false]);
+
+  useEffect(() => {
+    const handleIntersection = (index, inView) => {
+      if (inView) {
+        setIsVisible((prevState) =>
+          prevState.map((value, i) => (i === index ? true : value))
+        );
+      }
+    };
+
+    cardRefs.forEach((ref, index) => {
+      const { current } = ref;
+      if (current) {
+        const options = {
+          threshold: 0.2, // Adjust this threshold as needed
+        };
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            handleIntersection(index, entry.isIntersecting);
+          },
+          options
+        );
+
+        observer.observe(current);
+
+        return () => {
+          observer.unobserve(current);
+        };
+      }
+    });
+  }, []);
+
   return (
     <Section>
-      <Card>
+      <Card  ref={cardRefs[0]} isVisible={isVisible[0]}>
         <Left>
           <h1>Software Developer</h1>
           <h2>Cove Neurosciences</h2>
@@ -81,7 +118,7 @@ const Experience = () => {
           </ul>
         </Right>
       </Card>
-      <Card>
+      <Card ref={cardRefs[1]} isVisible={isVisible[1]}>
         <Left>
           <h1>Open Source Developer</h1>
           <h2>UofT Blueprint</h2>
@@ -99,7 +136,7 @@ const Experience = () => {
           </ul>
         </Right>
       </Card>
-      <Card>
+      <Card ref={cardRefs[2]} isVisible={isVisible[2]}>
         <Left>
           <h1>Software Developer</h1>
           <h2>Government of Canada</h2>

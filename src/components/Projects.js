@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 const Section = styled.div`
@@ -32,6 +32,9 @@ const Card = styled.div`
   align-self: center;
   gap: 20px;
   text-align: center;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
+  transition: opacity 0.5s ease, transform 0.5s ease;
 
   @media only screen and (max-width: 768px) {
     width: 80%;
@@ -49,13 +52,47 @@ const P = styled.p`
 `;
 
 const Projects = () => {
+  const cardRefs = [useRef(null), useRef(null)];
+  const [isVisible, setIsVisible] = useState([false, false]);
+
+  useEffect(() => {
+    const handleIntersection = (index, inView) => {
+      if (inView) {
+        setIsVisible((prevState) =>
+          prevState.map((value, i) => (i === index ? true : value))
+        );
+      }
+    };
+
+    cardRefs.forEach((ref, index) => {
+      const { current } = ref;
+      if (current) {
+        const options = {
+          threshold: 0.2, // Adjust this threshold as needed
+        };
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            handleIntersection(index, entry.isIntersecting);
+          },
+          options
+        );
+
+        observer.observe(current);
+
+        return () => {
+          observer.unobserve(current);
+        };
+      }
+    });
+  }, []);
+
   return (
     <Section>
-      <Card>
+      <Card ref={cardRefs[0]} isVisible={isVisible[0]}>
         <Img src="./img/callhub.png" onClick={()=> window.open('https://github.com/Callhub-Connect')}/>
         <P>An interactive call center application, designed to revolutionize how organizations engage with customers during support interactions.</P>
       </Card>
-      <Card>
+      <Card ref={cardRefs[1]} isVisible={isVisible[1]}>
         <Img src="./img/tces.png" onClick={()=> window.open('https://github.com/uoftblueprint/tces')}/>
         <P>An internal-use customer relationship management application designed and developed for Toronto Community Employment Services.</P>
       </Card>
