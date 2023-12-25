@@ -74,7 +74,7 @@ const Button = styled.button`
   padding: 10px;
 
   @media only screen and (max-width: 768px) {
-    filter: blur(15px);
+    backdrop-filter: blur(5px);
   }
 `;
 
