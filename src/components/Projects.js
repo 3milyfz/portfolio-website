@@ -37,7 +37,7 @@ const Card = styled.div`
   transition: opacity 0.5s ease, transform 0.5s ease;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   @media only screen and (max-width: 768px) {

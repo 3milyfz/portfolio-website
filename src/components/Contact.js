@@ -72,6 +72,10 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 20px;
   padding: 10px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `;
 
 const P = styled.p`
