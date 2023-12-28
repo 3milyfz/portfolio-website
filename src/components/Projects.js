@@ -36,6 +36,10 @@ const Card = styled.div`
   transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
   transition: opacity 0.5s ease, transform 0.5s ease;
 
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
   @media only screen and (max-width: 768px) {
     width: 80%;
   }
