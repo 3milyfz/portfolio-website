@@ -5,8 +5,8 @@ const Section = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; /* Align vertically centered */
-  height: 100vh; /* Set a height to center vertically on the viewport */
+  align-items: center;
+  height: 100vh;
   gap: 40px;
 
   @media only screen and (max-width: 768px) {
@@ -21,8 +21,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 42%;
-  background-color: rgba(255, 255, 255, 0.08); /* Use RGBA with opacity */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Use RGBA with opacity */
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 20px;
@@ -55,25 +55,37 @@ const P = styled.p`
   font-size: large;
 `;
 
+const projectData = [
+  {
+    imageSrc: './img/callhub.png',
+    link: 'https://github.com/Callhub-Connect',
+    description:
+      'An interactive call center application, designed to revolutionize how organizations engage with customers during support interactions.',
+  },
+  {
+    imageSrc: './img/tces.png',
+    link: 'https://github.com/uoftblueprint/tces',
+    description:
+      'An internal-use customer relationship management application designed and developed for Toronto Community Employment Services.',
+  },
+];
+
 const Projects = () => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cardRefs = [useRef(null), useRef(null)];
   const [isVisible, setIsVisible] = useState([false, false]);
 
   useEffect(() => {
     const handleIntersection = (index, inView) => {
-      if (inView) {
-        setIsVisible((prevState) =>
-          prevState.map((value, i) => (i === index ? true : value))
-        );
-      }
+      setIsVisible((prevState) =>
+        prevState.map((value, i) => (i === index ? inView : value))
+      );
     };
 
     cardRefs.forEach((ref, index) => {
       const { current } = ref;
       if (current) {
         const options = {
-          threshold: 0.2, // Adjust this threshold as needed
+          threshold: 0.2,
         };
         const observer = new IntersectionObserver(
           ([entry]) => {
@@ -93,14 +105,15 @@ const Projects = () => {
 
   return (
     <Section>
-      <Card ref={cardRefs[0]} isVisible={isVisible[0]}>
-        <Img src="./img/callhub.png" onClick={()=> window.open('https://github.com/Callhub-Connect')}/>
-        <P>An interactive call center application, designed to revolutionize how organizations engage with customers during support interactions.</P>
-      </Card>
-      <Card ref={cardRefs[1]} isVisible={isVisible[1]}>
-        <Img src="./img/tces.png" onClick={()=> window.open('https://github.com/uoftblueprint/tces')}/>
-        <P>An internal-use customer relationship management application designed and developed for Toronto Community Employment Services.</P>
-      </Card>
+      {projectData.map((project, index) => (
+        <Card key={index} ref={cardRefs[index]} isVisible={isVisible[index]}>
+          <Img
+            src={project.imageSrc}
+            onClick={() => window.open(project.link)}
+          />
+          <P>{project.description}</P>
+        </Card>
+      ))}
     </Section>
   );
 };

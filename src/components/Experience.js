@@ -5,8 +5,8 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* Align vertically centered */
-  height: 100vh; /* Set a height to center vertically on the viewport */
+  align-items: center;
+  height: 100vh;
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
@@ -19,8 +19,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: row;
   width: 90%;
-  background-color: rgba(255, 255, 255, 0.08); /* Use RGBA with opacity */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Use RGBA with opacity */
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 20px;
@@ -59,28 +59,56 @@ const Right = styled.div`
 
 const ListItem = styled.li`
   font-size: large;
-  margin-bottom: 10px; /* Add a margin to create a gap between list items */
+  margin-bottom: 10px;
 `;
 
+const experienceData = [
+  {
+    title: 'Software Developer',
+    company: 'Cove Neurosciences',
+    date: 'Jan. 2024 - Present',
+    description: [
+      'Implementing interactive data visualization components in React, enhancing the presentation and analysis of complex neurological data.',
+      'Engineering robust backend solutions using Python to manage and process large datasets in neurological research.',
+    ],
+  },
+  {
+    title: 'Open Source Developer',
+    company: 'UofT Blueprint',
+    date: 'Sep. 2023 - Present',
+    description: [
+      'Collaborating with a cross-functional team of UX/UI designers and developers to integrate React front-end and Express.js-based back-end components.',
+      'Implementing Agile development methodologies and utilizing Scrum framework to increase productivity and promote timely delivery of high-quality tickets.',
+    ],
+  },
+  {
+    title: 'Software Developer',
+    company: 'Government of Canada',
+    date: 'May. 2023 - Aug. 2023',
+    description: [
+      'Developed Azure functions in TypeScript to seamlessly connect with external APIs, streamlining data retrieval processes and enhancing system integration.',
+      'Integrated automated testing suites using Jest, effectively mitigating software bugs and elevating overall software functionality.',
+      'Created scalable Rest APIs, employing Postman for comprehensive testing to ensure seamless integration.',
+    ],
+  },
+];
+
 const Experience = () => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cardRefs = [useRef(null), useRef(null), useRef(null)];
   const [isVisible, setIsVisible] = useState([false, false, false]);
 
   useEffect(() => {
     const handleIntersection = (index, inView) => {
-      if (inView) {
-        setIsVisible((prevState) =>
-          prevState.map((value, i) => (i === index ? true : value))
-        );
-      }
+      setIsVisible((prevState) =>
+        prevState.map((value, i) => (i === index ? inView : value))
+      );
     };
 
     cardRefs.forEach((ref, index) => {
       const { current } = ref;
       if (current) {
         const options = {
-          threshold: 0.2, // Adjust this threshold as needed
+          threshold: 0.2,
         };
         const observer = new IntersectionObserver(
           ([entry]) => {
@@ -100,66 +128,22 @@ const Experience = () => {
 
   return (
     <Section>
-      <Card  ref={cardRefs[0]} isVisible={isVisible[0]}>
-        <Left>
-          <h1>Software Developer</h1>
-          <h2>Cove Neurosciences</h2>
-          <h4>Jan. 2024 - Present</h4>
-        </Left>
-        <Right>
-          <ul>
-            <ListItem>
-              Implementing interactive data visualization components in <strong>React</strong>, 
-              enhancing the presentation and analysis of complex neurological data.
-            </ListItem>
-            <ListItem>
-              Engineering robust backend solutions using <strong>Python</strong> to
-              manage and process large datasets in neurological research.
-            </ListItem>
-          </ul>
-        </Right>
-      </Card>
-      <Card ref={cardRefs[1]} isVisible={isVisible[1]}>
-        <Left>
-          <h1>Open Source Developer</h1>
-          <h2>UofT Blueprint</h2>
-          <h4>Sep. 2023 - Present</h4>
-        </Left>
-        <Right>
-          <ul>
-            <ListItem>
-              Collaborating with a cross-functional team of UX/UI designers and developers to 
-              integrate <strong>React</strong> front-end and <strong>Express.js</strong>-based back-end components.
-            </ListItem>
-            <ListItem>
-              Implementing <strong>Agile</strong> development methodologies and utilizing <strong>Scrum</strong> framework to increase productivity and promote timely delivery of high-quality tickets.
-            </ListItem>
-          </ul>
-        </Right>
-      </Card>
-      <Card ref={cardRefs[2]} isVisible={isVisible[2]}>
-        <Left>
-          <h1>Software Developer</h1>
-          <h2>Government of Canada</h2>
-          <h4>May. 2023 - Aug. 2023</h4>
-        </Left>
-        <Right>
-          <ul>
-            <ListItem>
-              Developed <strong>Azure</strong> functions in <strong>TypeScript</strong> to seamlessly connect 
-              with external APIs, streamlining data retrieval processes and enhancing system integration.
-            </ListItem>
-            <ListItem>
-              Integrated automated testing suites using <strong>Jest</strong>, effectively mitigating software 
-              bugs and elevating overall software functionality.
-            </ListItem>
-            <ListItem>
-              Created scalable <strong>Rest APIs</strong>, employing <strong>Postman</strong> for comprehensive 
-              testing to ensure seamless integration.
-            </ListItem>
-          </ul>
-        </Right>
-      </Card>
+      {experienceData.map((experience, index) => (
+        <Card key={index} ref={cardRefs[index]} isVisible={isVisible[index]}>
+          <Left>
+            <h1>{experience.title}</h1>
+            <h2>{experience.company}</h2>
+            <h4>{experience.date}</h4>
+          </Left>
+          <Right>
+            <ul>
+              {experience.description.map((desc, i) => (
+                <ListItem key={i}>{desc}</ListItem>
+              ))}
+            </ul>
+          </Right>
+        </Card>
+      ))}
     </Section>
   );
 };
