@@ -71,6 +71,7 @@ const projectData = [
 ];
 
 const Projects = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cardRefs = [useRef(null), useRef(null)];
   const [isVisible, setIsVisible] = useState([false, false]);
 

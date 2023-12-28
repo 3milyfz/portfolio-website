@@ -94,6 +94,7 @@ const experienceData = [
 ];
 
 const Experience = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cardRefs = [useRef(null), useRef(null), useRef(null)];
   const [isVisible, setIsVisible] = useState([false, false, false]);
 
