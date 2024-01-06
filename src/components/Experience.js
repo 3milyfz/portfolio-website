@@ -21,6 +21,7 @@ const Card = styled.div`
   width: 90%;
   background-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 20px;

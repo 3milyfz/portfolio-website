@@ -65,6 +65,7 @@ const Button = styled.button`
   background-color: rgba(255, 255, 255, 0.08); /* Use RGBA with opacity */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Use RGBA with opacity */
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   font-size: x-large;
   font-family:'Google Sans', sans-serif;
   color: white;
