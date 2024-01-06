@@ -21,7 +21,7 @@ html, body {
 
 @media (max-width: 768px) {
   .bubbles-background .bubble {
-    animation: animate 8s linear infinite; /* Adjust animation duration for mobile screens */
+    animation: animate 7s linear infinite; /* Adjust animation duration for mobile screens */
   }
 }
 
