@@ -14,6 +14,17 @@ html, body {
   height: 100%;
 }
 
+:root {
+  --max-bubbles-mobile: 10;
+  --max-bubbles-desktop: 20;
+}
+
+@media (max-width: 768px) {
+  .bubbles-background .bubble {
+    animation: animate 8s linear infinite; /* Adjust animation duration for mobile screens */
+  }
+}
+
 .bubbles-background {
   position: fixed;
   top: 0;
