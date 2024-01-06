@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const createBubble = () => {
       const minSize = 20;
-      const maxSize = 150; // Adjust the maximum size as needed
+      const maxSize = 180; // Adjust the maximum size as needed
       const size = minSize + Math.random() * (maxSize - minSize);
       const left = Math.random() * window.innerWidth + 'px';
 
@@ -24,11 +24,18 @@ function App() {
       setBubbles((prevBubbles) => [...prevBubbles, newBubble]);
 
       setTimeout(() => {
-        setBubbles((prevBubbles) => prevBubbles.filter((bubble) => bubble.key !== newBubble.key));
+        setBubbles((prevBubbles) =>
+          prevBubbles.map((bubble) =>
+            bubble.key === newBubble.key ? { ...bubble, removing: true } : bubble
+          )
+        );
+        setTimeout(() => {
+          setBubbles((prevBubbles) => prevBubbles.filter((bubble) => bubble.key !== newBubble.key));
+        }, 500); // Adjust the time to match the "bubblePop" animation duration
       }, 4000);
     };
 
-    const bubbleInterval = setInterval(createBubble, 150);
+    const bubbleInterval = setInterval(createBubble, 180);
 
     return () => clearInterval(bubbleInterval);
   }, []);
@@ -39,15 +46,15 @@ function App() {
         {bubbles.map((bubble) => (
           <span
             key={bubble.key}
-            className="bubble"
+            className={`bubble ${bubble.removing ? 'bubblePop' : ''}`}
             style={{ width: bubble.size, height: bubble.size, left: bubble.left }}
           ></span>
         ))}
       </section>
       <Home />
-      <Experience/>
-      <Projects/>
-      <Contact/>
+      <Experience />
+      <Projects />
+      <Contact />
     </div>
   );
 }
