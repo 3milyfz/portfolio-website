@@ -84,7 +84,7 @@ const experienceData = [
   {
     title: 'Software Developer',
     company: 'Government of Canada',
-    date: 'May. 2023 - Aug. 2023',
+    date: 'May 2023 - Aug. 2023',
     description: [
       'Developed Azure functions in TypeScript to seamlessly connect with external APIs, streamlining data retrieval processes and enhancing system integration.',
       'Integrated automated testing suites using Jest, effectively mitigating software bugs and elevating overall software functionality.',
