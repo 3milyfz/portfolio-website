@@ -54,10 +54,10 @@ function App() {
           ></span>
         ))}
       </section>
-      <Home />
-      <Experience />
-      <Projects />
-      <Contact />
+      <div id="home"><Home /></div>
+      <div id="experience"><Experience /></div>
+      <div id="projects"><Projects /></div>
+      <div id="contact"><Contact /></div>
     </div>
   );
 }

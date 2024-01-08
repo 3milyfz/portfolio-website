@@ -79,7 +79,7 @@ const experienceData = [
     date: 'Sep. 2023 - Present',
     description: [
       'Collaborating with a cross-functional team of UX/UI designers and developers to integrate React front-end and Express.js-based back-end components.',
-      'Implementing Agile development methodologies and utilizing Scrum framework to increase productivity and promote timely delivery of high-quality tickets.',
+      'Implementing Agile development methodologies and utilizing Scrum framework to increase productivity and promote timely delivery of tickets.',
     ],
   },
   {
@@ -87,8 +87,7 @@ const experienceData = [
     company: 'Government of Canada',
     date: 'May 2023 - Aug. 2023',
     description: [
-      'Developed Azure functions in TypeScript to seamlessly connect with external APIs, streamlining data retrieval processes and enhancing system integration.',
-      'Integrated automated testing suites using Jest, effectively mitigating software bugs and elevating overall software functionality.',
+      'Developed Azure functions in TypeScript and integrated automated testing suites, mitigating software bugs and expanding overall software functionality.',
       'Created scalable Rest APIs, employing Postman for comprehensive testing to ensure seamless integration.',
     ],
   },

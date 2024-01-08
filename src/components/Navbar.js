@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { styled } from 'styled-components'
+import SideNavbar from './SideNavbar';
 
 const Section = styled.div`
   display: flex;
@@ -26,11 +27,17 @@ const List = styled.ul`
   display: flex;
   align-items: center;
   gap: 40px;
+  padding-left: 78px;
   list-style: none;
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 0px;
+  }
 `;
 
 const Img = styled.img`
   width: 40px;
+  height: 40px;
   cursor: pointer;
 `;
 
@@ -42,11 +49,13 @@ const Me = styled.img`
 `;
 
 const NavBar = () => {
+  
   return (
     <Section>
         <Container>
             <Links>
               <List>
+                <SideNavbar/>
                 <Img src="./img/linkedin.png" onClick={()=>window.open('https://www.linkedin.com/in/emily-fz/')}/>
                 <Img src="./img/github.png" onClick={()=>window.open('https://github.com/3milyfz')}/>
                 <Img src="./img/instagram.png" onClick={()=>window.open('https://www.instagram.com/emilyyzhou/')}/>
@@ -58,4 +67,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBar;
