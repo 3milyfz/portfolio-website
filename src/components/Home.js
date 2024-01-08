@@ -22,6 +22,10 @@ const Container = styled.div`
   text-align: center; // Center the text for all child elements
   gap: 30px;
   padding: 20px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 const Title = styled.h1`
