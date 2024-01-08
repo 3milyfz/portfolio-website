@@ -70,7 +70,7 @@ const experienceData = [
     date: 'Jan. 2024 - Present',
     description: [
       'Implementing interactive data visualization components in React, enhancing the presentation and analysis of complex neurological data.',
-      'Engineering robust backend solutions using Python to manage and process large datasets in neurological research.',
+      'Engineering robust backend solutions using Python to manage and process EEG data.',
     ],
   },
   {
@@ -78,8 +78,8 @@ const experienceData = [
     company: 'UofT Blueprint',
     date: 'Sep. 2023 - Present',
     description: [
-      'Collaborating with a cross-functional team of UX/UI designers and developers to integrate React front-end and Express.js-based back-end components.',
-      'Implementing Agile development methodologies and utilizing Scrum framework to increase productivity and promote timely delivery of tickets.',
+      'Collaborating with a cross-functional team to integrate React.js and Express.js components.',
+      'Implementing Agile development methodologies and utilizing Scrum to increase productivity and promote timely delivery of tickets.',
     ],
   },
   {
@@ -87,7 +87,7 @@ const experienceData = [
     company: 'Government of Canada',
     date: 'May 2023 - Aug. 2023',
     description: [
-      'Developed Azure functions in TypeScript and integrated automated testing suites, mitigating software bugs and expanding overall software functionality.',
+      'Developed Azure functions and automated testing suites, mitigating software bugs and expanding overall software functionality.',
       'Created scalable Rest APIs, employing Postman for comprehensive testing to ensure seamless integration.',
     ],
   },
