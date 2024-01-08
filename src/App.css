@@ -16,7 +16,7 @@ html, body {
 
 :root {
   --max-bubbles-mobile: 10;
-  --max-bubbles-desktop: 20;
+  --max-bubbles-desktop: 30;
 }
 
 @media (max-width: 768px) {
