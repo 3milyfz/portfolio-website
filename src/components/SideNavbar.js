@@ -15,6 +15,23 @@ const Nav = styled.img`
   }
 `;
 
+const CloseButton = styled.button`
+  position: absolute; // Position it relative to its parent
+  top: 20px; // Top right corner
+  right: 20px;
+  border: none; // No border
+  background: transparent; // Transparent background
+  cursor: pointer; // Pointer cursor on hover
+  font-size: 60px; // Larger font size for visibility
+  color: rgb(210, 212, 199);
+  z-index: 1001; // Ensure it's above other elements
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #555;
+  }
+`;
+
 const SideNav = styled.div`
   position: fixed;
   left: 0;
@@ -22,10 +39,10 @@ const SideNav = styled.div`
   width: fit-content;
   height: 100%;
   padding: 5%;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
   z-index: 1000; // High value to ensure it's on top
 
   @media only screen and (max-width: 768px) {
@@ -47,7 +64,7 @@ const NavLink = styled.a`
   z-index: 1000; // High value to ensure it's on top
 
   &:hover {
-    color: #555; // Color on hover, change as needed
+    color: #555;
   }
 
   @media only screen and (max-width: 768px) {
@@ -67,7 +84,8 @@ const SideNavbar = () => {
         <>
             <Nav src="./img/navicon.png" onClick={toggleNav}/>
             {isNavVisible && (
-                <SideNav isVisible={isNavVisible}>
+              <SideNav isVisible={isNavVisible}>
+                <CloseButton onClick={toggleNav}>×</CloseButton>
                 <NavLink href="#home" onClick={toggleNav}>Home</NavLink>
                 <NavLink href="#experience" onClick={toggleNav}>Experience</NavLink>
                 <NavLink href="#projects" onClick={toggleNav}>Projects</NavLink>
