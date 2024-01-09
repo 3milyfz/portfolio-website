@@ -27,6 +27,10 @@ const Container = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
   grid-gap: 1rem;
   padding: 40px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 30px;
+  }
 `;
 
 const Card = styled.div`
