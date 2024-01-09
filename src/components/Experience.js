@@ -19,12 +19,12 @@ const Card = styled.div`
   display: flex;
   flex-direction: row;
   width: 90%;
+  padding: 25px;
   background-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 15px;
   height: fit-content;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
@@ -37,7 +37,6 @@ const Card = styled.div`
 
 const Left = styled.div`
   flex: 1;
-  padding: 20px;
   color: rgb(210, 212, 199);
   display: flex;
   flex-direction: column;
@@ -47,7 +46,6 @@ const Left = styled.div`
 
 const Right = styled.div`
   flex: 1;
-  padding: 20px;
   color: rgb(210, 212, 199);
   display: flex;
   flex-direction: column;
