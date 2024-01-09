@@ -17,10 +17,16 @@ const Section = styled.div`
   }
 `;
 
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  grid-gap: 1.5rem;
+  padding: 20px;
+`;
+
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 42%;
   background-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(15px);
@@ -39,10 +45,6 @@ const Card = styled.div`
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  @media only screen and (max-width: 768px) {
-    width: 80%;
   }
 `;
 
@@ -107,15 +109,17 @@ const Projects = () => {
 
   return (
     <Section>
-      {projectData.map((project, index) => (
-        <Card key={index} ref={cardRefs[index]} isVisible={isVisible[index]}>
-          <Img
-            src={project.imageSrc}
-            onClick={() => window.open(project.link)}
-          />
-          <P>{project.description}</P>
-        </Card>
-      ))}
+      <Container>
+        {projectData.map((project, index) => (
+          <Card key={index} ref={cardRefs[index]} isVisible={isVisible[index]}>
+            <Img
+              src={project.imageSrc}
+              onClick={() => window.open(project.link)}
+            />
+            <P>{project.description}</P>
+          </Card>
+        ))}
+      </Container>
     </Section>
   );
 };

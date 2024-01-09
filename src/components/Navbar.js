@@ -32,6 +32,7 @@ const List = styled.ul`
 
   @media only screen and (max-width: 768px) {
     padding-left: 0px;
+    gap: 20px;
   }
 `;
 
