@@ -36,29 +36,37 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
-  width: 600px;
+  width: 40%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
   
   @media only screen and (max-width: 768px) {
-    width: 300px;
+    width: 70%;
   }
 `;
 
 const Input = styled.input`
   padding: 15px;
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: large;
+
+  @media only screen and (max-width: 768px) {
+    font-size: medium;
+  }
 `;
 
 const TextArea = styled.textarea`
   padding: 15px;
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
   font-family:'Google Sans', sans-serif;
   font-size: large;
+
+  @media only screen and (max-width: 768px) {
+    font-size: medium;
+  }
 `;
 
 const Button = styled.button`
@@ -110,7 +118,7 @@ const Contact = () => {
             <Title>Contact Me</Title>
             <Input placeholder="Name" name="name" />
             <Input placeholder="Email" name="email" />
-            <TextArea placeholder="Write your message" name="message" rows={10} />
+            <TextArea placeholder="Write your message" name="message" rows={8} />
             <Button type="submit">Send</Button>
             {success && <P>Your message has been sent. I'll get back to you soon!</P>}
           </Form>

@@ -8,13 +8,17 @@ const Section = styled.div`
   align-items: center;
   height: fit-content;
   min-height: 100vh;
-  gap: 40px;
+  gap: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 

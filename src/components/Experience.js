@@ -8,6 +8,8 @@ const Section = styled.div`
   align-items: center;
   height: 100vh;
   gap: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
