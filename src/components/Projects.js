@@ -6,22 +6,23 @@ const Section = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
+  min-height: 100vh;
   gap: 40px;
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
     flex-direction: column;
     align-items: center;
-    min-height: 120vh;
+    min-height: 100vh;
   }
 `;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
-  grid-gap: 1.5rem;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
+  grid-gap: 1rem;
+  padding: 40px;
 `;
 
 const Card = styled.div`
@@ -63,20 +64,26 @@ const projectData = [
     imageSrc: './img/callhub.png',
     link: 'https://github.com/Callhub-Connect',
     description:
-      'An interactive call center application, designed to revolutionize how organizations engage with customers during support interactions.',
+      'An interactive call center application, designed to revolutionize how organizations support their customers.',
   },
   {
     imageSrc: './img/tces.png',
     link: 'https://github.com/uoftblueprint/tces',
     description:
-      'An internal-use customer relationship management application designed and developed for Toronto Community Employment Services.',
+      'A customer relationship management application for Toronto Community Employment Services.',
+  },
+  {
+    imageSrc: './img/pw.png',
+    link: 'https://github.com/3milyfz/portfolio-website',
+    description:
+      'This portfolio website!',
   },
 ];
 
 const Projects = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const cardRefs = [useRef(null), useRef(null)];
-  const [isVisible, setIsVisible] = useState([false, false]);
+  const cardRefs = [useRef(null), useRef(null), useRef(null)];
+  const [isVisible, setIsVisible] = useState([false, false, false]);
 
   useEffect(() => {
     const handleIntersection = (index, inView) => {
