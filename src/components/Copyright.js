@@ -31,7 +31,7 @@ const Copyright = () => {
 
     return (
         <Container>
-            <Text>© {currentYear} Emily Zhou</Text>
+            <Text>© Emily Zhou {currentYear}</Text>
         </Container>
     );
 }
