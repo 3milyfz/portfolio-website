@@ -26,7 +26,7 @@ const Card = styled.div`
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   height: fit-content;
   color: rgb(210, 212, 199);
   align-items: center;

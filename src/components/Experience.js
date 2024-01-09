@@ -24,7 +24,7 @@ const Card = styled.div`
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   height: fit-content;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
