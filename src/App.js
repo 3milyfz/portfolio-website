@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Copyright from './components/Copyright';
 
 function App() {
   const [bubbles, setBubbles] = useState([]);
@@ -58,6 +59,7 @@ function App() {
       <div id="experience"><Experience /></div>
       <div id="projects"><Projects /></div>
       <div id="contact"><Contact /></div>
+      <Copyright/>
     </div>
   );
 }

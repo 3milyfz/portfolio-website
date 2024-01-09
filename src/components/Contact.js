@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import React from 'react';
-import { styled } from 'styled-components'
+import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 
 const Section = styled.div`
@@ -47,14 +47,14 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
-  padding: 20px;
+  padding: 15px;
   border: none;
   border-radius: 20px;
   font-size: large;
 `;
 
 const TextArea = styled.textarea`
-  padding: 20px;
+  padding: 15px;
   border: none;
   border-radius: 20px;
   font-family:'Google Sans', sans-serif;
