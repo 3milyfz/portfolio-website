@@ -70,7 +70,7 @@ const experienceData = [
     date: 'Jan. 2024 - Present',
     description: [
       'Implementing interactive data visualization components in React, enhancing the presentation and analysis of complex neurological data.',
-      'Engineering robust backend solutions using Python to manage and process EEG data.',
+      'Engineering robust backend solutions using Python to manage and process electroencephalogram (EEG) data.',
     ],
   },
   {
