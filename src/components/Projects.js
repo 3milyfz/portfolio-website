@@ -9,8 +9,8 @@ const Section = styled.div`
   height: fit-content;
   min-height: 100vh;
   gap: 20px;
-  padding-left: 65px;
-  padding-right: 65px;
+  padding-left: 75px;
+  padding-right: 75px;
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
