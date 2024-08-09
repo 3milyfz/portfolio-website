@@ -75,21 +75,21 @@ const experienceData = [
     ],
   },
   {
-    title: 'Software Developer Intern',
-    company: 'Cove Neurosciences',
-    date: 'Jan. 2024 - Present',
-    description: [
-      'Implementing interactive data visualization components in React, enhancing the presentation and analysis of complex neurological data.',
-      'Engineering robust backend solutions using Python to manage and process electroencephalogram (EEG) data.',
-    ],
-  },
-  {
     title: 'Open Source Developer',
     company: 'UofT Blueprint',
-    date: 'Sep. 2023 - Present',
+    date: 'Sep. 2023 - May 2024',
     description: [
       'Collaborating with a cross-functional team to integrate React.js and Express.js components.',
       'Implementing Agile development methodologies and utilizing Scrum to increase productivity and promote timely delivery of tickets.',
+    ],
+  },
+  {
+    title: 'Software Developer Intern',
+    company: 'Cove Neurosciences',
+    date: 'Jan. 2024 - Apr. 2024',
+    description: [
+      'Implementing interactive data visualization components in React, enhancing the presentation and analysis of complex neurological data.',
+      'Engineering robust backend solutions using Python to manage and process electroencephalogram (EEG) data.',
     ],
   },
   {
