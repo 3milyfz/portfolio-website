@@ -24,7 +24,7 @@ const Section = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(40rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
   grid-gap: 1rem;
   padding: 40px;
 
