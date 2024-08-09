@@ -6,10 +6,11 @@ const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
   gap: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
 
   @media only screen and (max-width: 768px) {
     height: fit-content;
@@ -65,7 +66,16 @@ const ListItem = styled.li`
 
 const experienceData = [
   {
-    title: 'Software Developer',
+    title: 'Systems Analyst Intern',
+    company: 'Chick-fil-A Corporate',
+    date: 'May 2024 - Aug. 2024',
+    description: [
+      'Owned the development of a Postman workflow that automated access to Chick-fil-A\'s warehouse management system.',
+      'Standardized IBM Cognos Analytics query alerts across 8 distribution centers, resulting in an increase in organizational efficiency.',
+    ],
+  },
+  {
+    title: 'Software Developer Intern',
     company: 'Cove Neurosciences',
     date: 'Jan. 2024 - Present',
     description: [
@@ -83,7 +93,7 @@ const experienceData = [
     ],
   },
   {
-    title: 'Software Developer',
+    title: 'Software Developer Intern',
     company: 'Government of Canada',
     date: 'May 2023 - Aug. 2023',
     description: [
@@ -95,8 +105,8 @@ const experienceData = [
 
 const Experience = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const cardRefs = [useRef(null), useRef(null), useRef(null)];
-  const [isVisible, setIsVisible] = useState([false, false, false]);
+  const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const [isVisible, setIsVisible] = useState([false, false, false, false]);
 
   useEffect(() => {
     const handleIntersection = (index, inView) => {
