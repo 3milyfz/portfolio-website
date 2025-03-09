@@ -7,6 +7,7 @@ const Section = styled.div`
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
+  background: ${({ theme }) => theme.bg || "black"};
 
   @media only screen and (max-width: 768px) {
     height: 100vh;
@@ -14,44 +15,53 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex; // Enable flexbox
+  margin: 5%;
+  display: flex;
   flex-direction: column;
-  justify-content: center; // Center children vertically in the container
-  align-items: center; // Center children horizontally in the container
-  height: 100%; // Take full height of the parent
-  text-align: center; // Center the text for all child elements
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
   gap: 30px;
   padding: 20px;
 `;
 
 const Title = styled.h1`
-  font-size: 60px;
-  color: rgb(210, 212, 199);
+  font-size: ${({ size }) => size || "60px"};
+  color: ${({ theme }) => theme.text || "rgb(210, 212, 199)"};
 
   @media only screen and (max-width: 768px) {
-    font-size: 70px;
+    font-size: ${({ size }) => (size ? `calc(${size} - 10px)` : "50px")};
   }
 `;
 
 const Text = styled.p`
-  font-size: 24px;
-  color: rgb(210, 212, 199);
+  font-size: ${({ size }) => size || "24px"};
+  color: ${({ theme }) => theme.text || "rgb(210, 212, 199)"};
 
   @media only screen and (max-width: 768px) {
-    font-size: 20px;
+    font-size: ${({ size }) => (size ? `calc(${size} - 4px)` : "20px")};
   }
 `;
 
-const Home = () => {
+const Home = ({
+  title = "Hello, 你好, Bonjour I'm Emily Zhou",
+  subtitle = "I like bringing people together to build cool things!",
+  theme = { bg: "black", text: "rgb(210, 212, 199)" },
+}) => {
   return (
-    <Section>
-        <NavBar/>
-        <Container>
-          <Title>Hello, 你好, Bonjour I'm Emily Zhou</Title>
-          <Text>I like bringing people together to build cool things!</Text>
-        </Container>
+    <Section theme={theme}>
+      <NavBar />
+      <Container>
+        <Title size="60px" theme={theme}>
+          {title}
+        </Title>
+        <Text size="24px" theme={theme}>
+          {subtitle}
+        </Text>
+      </Container>
     </Section>
   );
-}
+};
 
 export default Home;
