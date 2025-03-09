@@ -131,7 +131,7 @@ const About = () => {
     });
 
     setPositions(newPositions);
-  }, []);
+  }, [images]);
 
   useEffect(() => {
     const interval = setInterval(() => {
