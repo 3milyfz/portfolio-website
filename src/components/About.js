@@ -9,7 +9,7 @@ const Section = styled.section`
   padding: 5%;
   color: rgb(210, 212, 199);
   overflow: hidden;
-  max-width: 1200px;
+  max-width: 80%;
   margin: auto;
 
   @media (max-width: 768px) {
