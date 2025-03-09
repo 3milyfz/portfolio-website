@@ -1,158 +1,134 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { styled } from 'styled-components';
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: fit-content;
   gap: 20px;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 5%;
-
-  @media only screen and (max-width: 768px) {
-    height: fit-content;
-    min-height: 130vh;
-  }
+  padding: 5%;
 `;
 
 const Card = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 90%;
-  padding: 25px;
-  background-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  height: fit-content;
+  padding: 30px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
-  transition: opacity 0.5s ease, transform 0.5s ease;
-
-  @media only screen and (max-width: 768px) {
-    width: 80%;
-  }
+  transform: translateY(${({ isVisible }) => (isVisible ? "0" : "20px")});
+  transition: opacity 0.6s ease, transform 0.6s ease;
 `;
 
-const Left = styled.div`
-  flex: 1;
+const Title = styled.h2`
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0;
+`;
+
+const Company = styled.h3`
+  font-size: 1.4rem;
+  color: #b0b0b0;
+  margin: 5px 0;
+`;
+
+const Date = styled.p`
+  font-size: 1rem;
+  color: #b0b0b0;
+`;
+
+const Description = styled.p`
+  font-size: 1.2rem;
   color: rgb(210, 212, 199);
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  gap: 10px;
+  margin-top: 15px;
 `;
 
-const Right = styled.div`
-  flex: 1;
-  color: rgb(210, 212, 199);
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
+const KeyTakeaway = styled.div`
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 5px solid #89c2d9;
+  border-radius: 12px;
 `;
 
-const ListItem = styled.li`
-  font-size: large;
-  margin-bottom: 10px;
+const TakeawayText = styled.p`
+  font-size: 1.2rem;
+  color: #48cae4;
+  font-weight: bold;
+  font-style: italic;
 `;
 
 const experienceData = [
   {
-    title: 'Systems Analyst Intern',
-    company: 'Chick-fil-A Corporate',
-    date: 'May 2024 - Aug. 2024',
-    description: [
-      'Owned the development of a Postman workflow that automated access to Chick-fil-A\'s warehouse management system.',
-      'Standardized IBM Cognos Analytics query alerts across 8 distribution centers, resulting in an increase in organizational efficiency.',
-    ],
+    title: "Systems Analyst Intern",
+    company: "Chick-fil-A Corporate",
+    date: "May 2024 - Aug. 2024",
+    description:
+      "Automated warehouse access with Postman, optimized alerts with IBM Cognos, and authored technical docs to streamline operations.",
+    takeaway:
+      "Chick-fil-A’s culture of stewardship and ownership taught me that great technology isn’t just about speed—it’s about building systems that empower people, sustain impact, and balance efficiency with care.",
   },
   {
-    title: 'Open Source Developer',
-    company: 'UofT Blueprint',
-    date: 'Sep. 2023 - May 2024',
-    description: [
-      'Collaborating with a cross-functional team to integrate React.js and Express.js components.',
-      'Implementing Agile development methodologies and utilizing Scrum to increase productivity and promote timely delivery of tickets.',
-    ],
+    title: "Software Developer Intern",
+    company: "Cove Neurosciences",
+    date: "Jan. 2024 - Apr. 2024",
+    description:
+      "Processed EEG data using Pandas, optimized pipelines for large datasets, and built interactive React charts for researchers.",
+    takeaway:
+      "Startup life taught me that progress favors the adaptable—embracing uncertainty, wearing many hats, and moving fast is how innovation happens.",
   },
   {
-    title: 'Software Developer Intern',
-    company: 'Cove Neurosciences',
-    date: 'Jan. 2024 - Apr. 2024',
-    description: [
-      'Implementing interactive data visualization components in React, enhancing the presentation and analysis of complex neurological data.',
-      'Engineering robust backend solutions using Python to manage and process electroencephalogram (EEG) data.',
-    ],
-  },
-  {
-    title: 'Software Developer Intern',
-    company: 'Government of Canada',
-    date: 'May 2023 - Aug. 2023',
-    description: [
-      'Developed Azure functions and automated testing suites, mitigating software bugs and expanding overall software functionality.',
-      'Created scalable Rest APIs, employing Postman for comprehensive testing to ensure seamless integration.',
-    ],
+    title: "Software Developer Intern",
+    company: "Government of Canada",
+    date: "May 2023 - Aug. 2023",
+    description:
+      "Developed cloud APIs with Azure Functions & TypeScript, integrating Jest tests to enhance reliability for 10,000+ users.",
+    takeaway:
+      "My first internship taught me that growth begins where certainty ends—the ability to learn, ask the right questions, and navigate the unknown is the most valuable skill of all.",
   },
 ];
 
 const Experience = () => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const cardRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  const [isVisible, setIsVisible] = useState([false, false, false, false]);
+  const cardRefs = useRef(experienceData.map(() => React.createRef()));
+  const [isVisible, setIsVisible] = useState(Array(experienceData.length).fill(false));
 
   useEffect(() => {
-    const handleIntersection = (index, inView) => {
-      setIsVisible((prevState) =>
-        prevState.map((value, i) => (i === index ? inView : value))
+    const observers = cardRefs.current.map((ref, index) => {
+      if (!ref.current) return null;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prevState) =>
+              prevState.map((v, i) => (i === index ? true : v))
+            );
+          }
+        },
+        { threshold: 0.2 }
       );
-    };
 
-    cardRefs.forEach((ref, index) => {
-      const { current } = ref;
-      if (current) {
-        const options = {
-          threshold: 0.2,
-        };
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            handleIntersection(index, entry.isIntersecting);
-          },
-          options
-        );
-
-        observer.observe(current);
-
-        return () => {
-          observer.unobserve(current);
-        };
-      }
+      observer.observe(ref.current);
+      return observer;
     });
-  }, [cardRefs]);
+
+    return () => observers.forEach((observer) => observer && observer.disconnect());
+  }, []);
 
   return (
     <Section>
       {experienceData.map((experience, index) => (
-        <Card key={index} ref={cardRefs[index]} isVisible={isVisible[index]}>
-          <Left>
-            <h1>{experience.title}</h1>
-            <h2>{experience.company}</h2>
-            <h4>{experience.date}</h4>
-          </Left>
-          <Right>
-            <ul>
-              {experience.description.map((desc, i) => (
-                <ListItem key={i}>{desc}</ListItem>
-              ))}
-            </ul>
-          </Right>
+        <Card key={index} ref={cardRefs.current[index]} isVisible={isVisible[index]}>
+          <Title>{experience.title}</Title>
+          <Company>{experience.company}</Company>
+          <Date>{experience.date}</Date>
+          <Description>{experience.description}</Description>
+          <KeyTakeaway>
+            <TakeawayText><em>Key Takeaway?</em> {experience.takeaway}</TakeawayText>
+          </KeyTakeaway>
         </Card>
       ))}
     </Section>
