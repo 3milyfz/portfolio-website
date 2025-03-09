@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 
 const Section = styled.section`
@@ -90,7 +90,7 @@ const ImageNode = styled.img`
 `;
 
 const About = () => {
-  const images = [
+  const images = useMemo(() => [
     "/img/img_net/1.jpg",
     "/img/img_net/11.jpg",
     "/img/img_net/2.jpg",
@@ -111,7 +111,7 @@ const About = () => {
     "/img/img_net/13.jpg",
     "/img/img_net/21.jpg",
     "/img/img_net/7.jpg",
-  ];
+  ], []);
 
   const [positions, setPositions] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -131,12 +131,12 @@ const About = () => {
     });
 
     setPositions(newPositions);
-  }, [images]);
+  }, [images, images.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000); // Changes the active image every second
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [images.length]);
