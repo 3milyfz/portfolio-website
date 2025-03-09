@@ -13,7 +13,6 @@ const Section = styled.section`
   overflow: visible;
 
   @media (max-width: 768px) {
-    height: fit-content;
     flex-direction: column;
     text-align: center;
     justify-content: center;
