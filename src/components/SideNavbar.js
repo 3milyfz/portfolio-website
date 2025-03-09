@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { styled } from 'styled-components'
+import React, { useState } from "react";
+import styled from "styled-components";
 
 const Nav = styled.img`
-  position: fixed; // Make it fixed position
-  top: 27px; // Adjust as needed
-  left: 30px; // Adjust as needed
+  position: fixed;
+  top: 27px;
+  left: 30px;
   width: 42px;
   height: 38px;
   cursor: pointer;
-  z-index: 1000; // High value to ensure it's on top
+  z-index: 1000;
 
   @media only screen and (max-width: 768px) {
     display: none;
@@ -16,15 +16,15 @@ const Nav = styled.img`
 `;
 
 const CloseButton = styled.button`
-  position: absolute; // Position it relative to its parent
-  top: 20px; // Top right corner
+  position: absolute;
+  top: 20px;
   right: 20px;
-  border: none; // No border
-  background: transparent; // Transparent background
-  cursor: pointer; // Pointer cursor on hover
-  font-size: 60px; // Larger font size for visibility
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 50px;
   color: rgb(210, 212, 199);
-  z-index: 1001; // Ensure it's above other elements
+  z-index: 1001;
   transition: color 0.3s ease;
 
   &:hover {
@@ -34,66 +34,68 @@ const CloseButton = styled.button`
 
 const SideNav = styled.div`
   position: fixed;
-  left: 0;
+  left: ${({ isVisible }) => (isVisible ? "0" : "-100%")}; /* Slide in/out */
   top: 0;
-  width: fit-content;
-  height: 100%;
+  width: 250px;
+  height: 100vh;
   padding: 5%;
   background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(40px);
   backdrop-filter: blur(40px);
-  z-index: 1000; // High value to ensure it's on top
+  z-index: 1000;
+  transition: left 0.4s ease-in-out; /* Smooth slide animation */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto; /* Allows scrolling if content exceeds screen height */
 
   @media only screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const NavLink = styled.a`
+const NavLinksContainer = styled.div`
+  display: flex;
   flex-direction: column;
-  height: 23%;
-  display: block; // Each link on its own line
-  font-size: 60px; // Larger font size
+  justify-content: space-around; /* Ensures even spacing */
+  height: 80vh; /* Ensures links fit within viewport */
+  width: 100%;
+  align-items: flex-start;
+`;
+
+const NavLink = styled.a`
+  font-size: clamp(32px, 5vh, 50px); /* Dynamically adjusts font size */
   color: rgb(210, 212, 199);
-  text-align: left; // Center align text
-  text-decoration: none; // Remove underline
+  text-decoration: none;
   transition: color 0.3s ease;
-  justify-content: space-between;
-  transition: color 0.3s ease;
-  z-index: 1000; // High value to ensure it's on top
 
   &:hover {
     color: #555;
   }
-
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
-
 const SideNavbar = () => {
-    const [isNavVisible, setIsNavVisible] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(false);
 
-    const toggleNav = () => {
-      setIsNavVisible(!isNavVisible);
-    };
+  const toggleNav = () => {
+    setIsNavVisible(!isNavVisible);
+  };
 
-    return (
-        <>
-            <Nav src="./img/navicon.png" onClick={toggleNav}/>
-            {isNavVisible && (
-              <SideNav isVisible={isNavVisible}>
-                <CloseButton onClick={toggleNav}>×</CloseButton>
-                <NavLink href="#home" onClick={toggleNav}>Home</NavLink>
-                <NavLink href="#experience" onClick={toggleNav}>Experience</NavLink>
-                <NavLink href="#projects" onClick={toggleNav}>Projects</NavLink>
-                <NavLink href="#contact" onClick={toggleNav}>Contact</NavLink>
-            </SideNav>
-            )}
-        </>
-    )
-}
+  return (
+    <>
+      <Nav src="./img/navicon.png" onClick={toggleNav} />
+      <SideNav isVisible={isNavVisible}>
+        <CloseButton onClick={toggleNav}>×</CloseButton>
+        <NavLinksContainer>
+          <NavLink href="#home" onClick={toggleNav}>Home</NavLink>
+          <NavLink href="#about" onClick={toggleNav}>About</NavLink>
+          <NavLink href="#experience" onClick={toggleNav}>Experience</NavLink>
+          <NavLink href="#projects" onClick={toggleNav}>Projects</NavLink>
+          <NavLink href="#contact" onClick={toggleNav}>Contact</NavLink>
+        </NavLinksContainer>
+      </SideNav>
+    </>
+  );
+};
 
 export default SideNavbar;
