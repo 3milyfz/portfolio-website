@@ -158,7 +158,7 @@ const About = () => {
       setPositions(newPositions);
       setLoading(false);
     }, 2000);
-  }, [images.length, circleSize]);
+  }, [images, images.length, circleSize]);
 
   useEffect(() => {
     const interval = setInterval(() => {
