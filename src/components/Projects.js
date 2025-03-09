@@ -5,22 +5,32 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  padding: 8%;
+  padding: 5%;
+  max-width: 80%;
+  margin: auto;
 
   @media (max-width: 768px) {
     padding: 5% 0;
+    max-width: 80%;
   }
 `;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
-  grid-gap: 1rem;
-  padding: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
 
   @media (max-width: 768px) {
-    padding: 30px;
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
   }
 `;
 
@@ -31,8 +41,7 @@ const Card = styled.div`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 20px;
-  margin: 5px;
+  padding: 2rem;
   color: rgb(210, 212, 199);
   text-align: center;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
@@ -41,7 +50,11 @@ const Card = styled.div`
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.12);
-    transform: scale(1.02);
+    transform: scale(1.03);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
   }
 `;
 
@@ -57,8 +70,8 @@ const Img = styled.img`
 `;
 
 const P = styled.p`
-  font-size: 1.2rem;
-  margin-top: 16px;
+  font-size: clamp(1rem, 2vw, 1.3rem); /* Scales dynamically */
+  margin-top: 1rem;
 `;
 
 const projectData = [

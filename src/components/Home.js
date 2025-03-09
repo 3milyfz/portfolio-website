@@ -21,26 +21,19 @@ const Container = styled.div`
   align-items: center;
   height: 100%;
   text-align: center;
-  gap: 30px;
+  gap: 2rem;
   padding: 20px;
 `;
 
 const Title = styled.h1`
-  font-size: ${({ size }) => size || "60px"};
+  font-size: clamp(2rem, 5vw, 3.75rem);
   color: ${({ theme }) => theme.text || "rgb(210, 212, 199)"};
-
-  @media only screen and (max-width: 768px) {
-    font-size: ${({ size }) => (size ? `calc(${size} - 10px)` : "50px")};
-  }
+  font-weight: bold;
 `;
 
 const Text = styled.p`
-  font-size: ${({ size }) => size || "24px"};
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   color: ${({ theme }) => theme.text || "rgb(210, 212, 199)"};
-
-  @media only screen and (max-width: 768px) {
-    font-size: ${({ size }) => (size ? `calc(${size} - 4px)` : "20px")};
-  }
 `;
 
 const Home = ({
@@ -52,12 +45,8 @@ const Home = ({
     <Section theme={theme}>
       <NavBar />
       <Container>
-        <Title size="60px" theme={theme}>
-          {title}
-        </Title>
-        <Text size="24px" theme={theme}>
-          {subtitle}
-        </Text>
+        <Title theme={theme}>{title}</Title>
+        <Text theme={theme}>{subtitle}</Text>
       </Container>
     </Section>
   );

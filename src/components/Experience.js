@@ -21,10 +21,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 40px;
+  padding: 2rem;
 
   @media (max-width: 768px) {
-    padding: 30px;
+    padding: 1.5rem;
   }
 `;
 
@@ -32,8 +32,8 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 30px;
-  margin: 10px 0;
+  padding: 2rem;
+  margin: 1rem 0;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
@@ -41,6 +41,10 @@ const Card = styled.div`
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transform: translateY(${({ isVisible }) => (isVisible ? "0" : "30px")});
   transition: opacity 0.5s ease, transform 0.5s ease;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -56,21 +60,21 @@ const HeaderWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   color: #fff;
   margin: 0;
 `;
 
 const Company = styled.h3`
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: #b0b0b0;
-  margin: 5px 0;
+  margin: 0.3rem 0;
 `;
 
 const DateLocationWrapper = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: #b0b0b0;
   gap: 10px;
 
@@ -81,21 +85,21 @@ const DateLocationWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: rgb(210, 212, 199);
-  margin-top: 15px;
+  margin-top: 1rem;
 `;
 
 const KeyTakeaway = styled.div`
-  margin-top: 20px;
-  padding: 15px;
+  margin-top: 1.5rem;
+  padding: 1.2rem;
   background: linear-gradient(135deg, rgba(65, 89, 208, 0.15), rgba(224, 111, 216, 0.1), rgba(255, 212, 132, 0.1));
   border-left: 5px solid #89c2d9;
   border-radius: 12px;
 `;
 
 const TakeawayText = styled.p`
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: rgb(218, 218, 218);
   font-weight: bold;
   font-style: italic;

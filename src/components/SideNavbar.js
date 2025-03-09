@@ -34,7 +34,7 @@ const CloseButton = styled.button`
 
 const SideNav = styled.div`
   position: fixed;
-  left: ${({ isVisible }) => (isVisible ? "0" : "-100%")}; /* Slide in/out */
+  left: ${({ isVisible }) => (isVisible ? "0" : "-100%")};
   top: 0;
   width: 250px;
   height: 100vh;
@@ -43,11 +43,11 @@ const SideNav = styled.div`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(40px);
   z-index: 1000;
-  transition: left 0.4s ease-in-out; /* Smooth slide animation */
+  transition: left 0.4s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow-y: auto; /* Allows scrolling if content exceeds screen height */
+  overflow-y: auto;
 
   @media only screen and (max-width: 768px) {
     display: none;
@@ -57,14 +57,14 @@ const SideNav = styled.div`
 const NavLinksContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around; /* Ensures even spacing */
-  height: 80vh; /* Ensures links fit within viewport */
+  justify-content: space-around;
+  height: 80vh;
   width: 100%;
   align-items: flex-start;
 `;
 
 const NavLink = styled.a`
-  font-size: clamp(32px, 5vh, 50px); /* Dynamically adjusts font size */
+  font-size: clamp(32px, 5vh, 50px);
   color: rgb(210, 212, 199);
   text-decoration: none;
   transition: color 0.3s ease;

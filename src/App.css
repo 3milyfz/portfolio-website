@@ -22,7 +22,7 @@ html, body {
 
 @media (max-width: 768px) {
   .bubbles-background .bubble {
-    animation: animate 7s linear infinite; /* Adjust animation duration for mobile screens */
+    animation: animate 7s linear infinite;
   }
 }
 
@@ -37,7 +37,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1; /* Set a negative z-index to place it behind other content */
+  z-index: -1; 
 }
 
 .bubbles-background .bubble {

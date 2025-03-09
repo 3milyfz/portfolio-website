@@ -8,7 +8,7 @@ const Section = styled.section`
   min-height: 100vh;
   padding: 5%;
   color: rgb(210, 212, 199);
-  max-width: 80%;
+  max-width: 1200px;
   margin: auto;
   overflow: visible;
 
@@ -17,7 +17,7 @@ const Section = styled.section`
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    padding-bottom: 20%;
+    padding-bottom: 10%;
   }
 `;
 
@@ -34,8 +34,8 @@ const LeftContainer = styled.div`
   height: ${({ size }) => size}px;
 
   @media (max-width: 768px) {
-    width: ${({ size }) => size * 0.9}px;
-    height: ${({ size }) => size * 0.9}px;
+    width: ${({ size }) => size * 0.85}px;
+    height: ${({ size }) => size * 0.85}px;
   }
 `;
 
@@ -45,7 +45,7 @@ const RightContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  gap: 15px;
+  gap: 1rem;
   padding-left: 3%;
   max-width: 550px;
 
@@ -57,23 +57,15 @@ const RightContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 50px;
+  font-size: clamp(2rem, 5vw, 3.75rem);
   font-weight: bold;
-  color: rgb(215, 227, 247);
-
-  @media (max-width: 768px) {
-    font-size: 40px;
-  }
+  color: rgb(241, 240, 240);
 `;
 
 const Text = styled.p`
-  font-size: 22px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.6;
   color: rgb(210, 212, 199);
-
-  @media (max-width: 768px) {
-    font-size: 18px;
-  }
 `;
 
 const ImageNode = styled.img`
@@ -108,37 +100,40 @@ const Spinner = styled.div`
 `;
 
 const About = () => {
-  const images = useMemo(() => [
-    "/img/img_net/1.jpg",
-    "/img/img_net/11.jpg",
-    "/img/img_net/2.jpg",
-    "/img/img_net/3.jpg",
-    "/img/img_net/4.jpg",
-    "/img/img_net/19.jpg",
-    "/img/img_net/20.jpg",
-    "/img/img_net/6.jpg",
-    "/img/img_net/5.jpg",
-    "/img/img_net/9.jpg",
-    "/img/img_net/12.jpg",
-    "/img/img_net/15.jpg",
-    "/img/img_net/16.jpg",
-    "/img/img_net/8.jpg",
-    "/img/img_net/18.jpg",
-    "/img/img_net/22.jpg",
-    "/img/img_net/10.jpg",
-    "/img/img_net/13.jpg",
-    "/img/img_net/21.jpg",
-    "/img/img_net/7.jpg",
-  ], []);
+  const images = useMemo(
+    () => [
+      "/img/img_net/1.jpg",
+      "/img/img_net/11.jpg",
+      "/img/img_net/2.jpg",
+      "/img/img_net/3.jpg",
+      "/img/img_net/4.jpg",
+      "/img/img_net/19.jpg",
+      "/img/img_net/20.jpg",
+      "/img/img_net/6.jpg",
+      "/img/img_net/5.jpg",
+      "/img/img_net/9.jpg",
+      "/img/img_net/12.jpg",
+      "/img/img_net/15.jpg",
+      "/img/img_net/16.jpg",
+      "/img/img_net/8.jpg",
+      "/img/img_net/18.jpg",
+      "/img/img_net/22.jpg",
+      "/img/img_net/10.jpg",
+      "/img/img_net/13.jpg",
+      "/img/img_net/21.jpg",
+      "/img/img_net/7.jpg",
+    ],
+    []
+  );
 
   const [positions, setPositions] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 320 : 450);
+  const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 300 : 450);
 
   useEffect(() => {
     const updateSize = () => {
-      setCircleSize(window.innerWidth < 768 ? 320 : 450);
+      setCircleSize(window.innerWidth < 768 ? 300 : 450);
     };
 
     window.addEventListener("resize", updateSize);
@@ -163,7 +158,7 @@ const About = () => {
       setPositions(newPositions);
       setLoading(false);
     }, 2000);
-  }, [images, images.length, circleSize]);
+  }, [images.length, circleSize]);
 
   useEffect(() => {
     const interval = setInterval(() => {
