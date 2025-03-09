@@ -7,7 +7,6 @@ const Section = styled.div`
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.bg || "black"};
 
   @media only screen and (max-width: 768px) {
     height: 100vh;
