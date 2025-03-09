@@ -1,24 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { styled } from 'styled-components';
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 const Section = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: fit-content;
   min-height: 100vh;
-  gap: 20px;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding: 8%;
 
-  @media only screen and (max-width: 768px) {
-    height: fit-content;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding-left: 0;
-    padding-right: 0;
+  @media (max-width: 768px) {
+    padding: 5% 0;
   }
 `;
 
@@ -28,7 +19,7 @@ const Container = styled.div`
   grid-gap: 1rem;
   padding: 40px;
 
-  @media only screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     padding: 30px;
   }
 `;
@@ -38,22 +29,19 @@ const Card = styled.div`
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 15px;
-  height: fit-content;
+  padding: 20px;
+  margin: 5px;
   color: rgb(210, 212, 199);
-  align-items: center;
-  align-self: center;
-  gap: 20px;
   text-align: center;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: translateY(${({ isVisible }) => (isVisible ? '0' : '20px')});
+  transform: translateY(${({ isVisible }) => (isVisible ? "0" : "30px")});
   transition: opacity 0.5s ease, transform 0.5s ease;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.12);
+    transform: scale(1.02);
   }
 `;
 
@@ -61,76 +49,68 @@ const Img = styled.img`
   cursor: pointer;
   width: 100%;
   border-radius: 20px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const P = styled.p`
-  font-size: large;
+  font-size: 1.2rem;
+  margin-top: 10px;
 `;
 
 const projectData = [
   {
-    imageSrc: './img/callhub.png',
-    link: 'https://github.com/Callhub-Connect',
+    imageSrc: "./img/callhub.png",
+    link: "https://github.com/Callhub-Connect",
     description:
-      'An interactive call center application, designed to revolutionize how organizations support their customers.',
+      "An interactive call center application, designed to revolutionize how organizations support their customers.",
   },
   {
-    imageSrc: './img/tces.png',
-    link: 'https://github.com/uoftblueprint/tces',
+    imageSrc: "./img/tces.png",
+    link: "https://github.com/uoftblueprint/tces",
     description:
-      'A customer relationship management application for Toronto Community Employment Services.',
+      "A customer relationship management application for Toronto Community Employment Services.",
   },
   {
-    imageSrc: './img/pw.png',
-    link: 'https://github.com/3milyfz/portfolio-website',
-    description:
-      'This portfolio website!',
+    imageSrc: "./img/pw.png",
+    link: "https://github.com/3milyfz/portfolio-website",
+    description: "This portfolio website!",
   },
 ];
 
 const Projects = () => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const cardRefs = [useRef(null), useRef(null), useRef(null)];
-  const [isVisible, setIsVisible] = useState([false, false, false]);
+  const cardRefs = useRef(projectData.map(() => React.createRef()));
+  const [isVisible, setIsVisible] = useState(Array(projectData.length).fill(false));
 
   useEffect(() => {
-    const handleIntersection = (index, inView) => {
-      setIsVisible((prevState) =>
-        prevState.map((value, i) => (i === index ? inView : value))
+    const observers = cardRefs.current.map((ref, index) => {
+      if (!ref.current) return null;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVisible((prevState) =>
+            prevState.map((v, i) => (i === index ? entry.isIntersecting : v))
+          );
+        },
+        { threshold: 0.2 }
       );
-    };
 
-    cardRefs.forEach((ref, index) => {
-      const { current } = ref;
-      if (current) {
-        const options = {
-          threshold: 0.2,
-        };
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            handleIntersection(index, entry.isIntersecting);
-          },
-          options
-        );
-
-        observer.observe(current);
-
-        return () => {
-          observer.unobserve(current);
-        };
-      }
+      observer.observe(ref.current);
+      return observer;
     });
-  }, [cardRefs]);
+
+    return () => observers.forEach((observer) => observer && observer.disconnect());
+  }, []);
 
   return (
     <Section>
       <Container>
         {projectData.map((project, index) => (
-          <Card key={index} ref={cardRefs[index]} isVisible={isVisible[index]}>
-            <Img
-              src={project.imageSrc}
-              onClick={() => window.open(project.link)}
-            />
+          <Card key={index} ref={cardRefs.current[index]} isVisible={isVisible[index]}>
+            <Img src={project.imageSrc} onClick={() => window.open(project.link)} />
             <P>{project.description}</P>
           </Card>
         ))}
