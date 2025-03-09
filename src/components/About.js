@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Section = styled.section`
   display: flex;
@@ -12,7 +12,9 @@ const Section = styled.section`
   max-width: 1200px;
   margin: auto;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
+    height: fit-content;
+    padding-bottom: 15%;
     flex-direction: column;
     text-align: center;
     justify-content: center;
@@ -25,14 +27,14 @@ const LeftContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 450px;
-  height: 450px;
   border-radius: 50%;
   overflow: visible;
 
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
+
   @media (max-width: 768px) {
-    width: 300px;
-    height: 300px;
+    order: 2;
   }
 `;
 
@@ -46,7 +48,7 @@ const RightContainer = styled.div`
   padding-left: 3%;
   max-width: 550px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     padding-left: 0;
     align-items: center;
     text-align: center;
@@ -75,8 +77,8 @@ const Text = styled.p`
 
 const ImageNode = styled.img`
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
   border-radius: 50%;
   object-fit: cover;
   transition: transform 0.5s ease-in-out;
@@ -84,9 +86,24 @@ const ImageNode = styled.img`
   ${({ isActive }) => isActive && "transform: scale(2.2); z-index: 2;"}
 
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
+    width: ${({ size }) => size * 0.8}px;
+    height: ${({ size }) => size * 0.8}px;
   }
+`;
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Spinner = styled.div`
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
+  position: absolute;
 `;
 
 const About = () => {
@@ -115,23 +132,37 @@ const About = () => {
 
   const [positions, setPositions] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 280 : 450);
 
   useEffect(() => {
-    const numImages = images.length;
-    const radius = 180;
-    const centerX = 225;
-    const centerY = 225;
-    const angleStep = (2 * Math.PI) / numImages;
+    const updateSize = () => {
+      setCircleSize(window.innerWidth < 768 ? 280 : 450);
+    };
 
-    const newPositions = images.map((_, index) => {
-      const angle = index * angleStep;
-      const x = Math.cos(angle) * radius + centerX - 45;
-      const y = Math.sin(angle) * radius + centerY - 45;
-      return { left: `${x}px`, top: `${y}px` };
-    });
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
-    setPositions(newPositions);
-  }, [images, images.length]);
+  useEffect(() => {
+    setTimeout(() => {
+      const numImages = images.length;
+      const radius = circleSize / 2 - 50;
+      const centerX = circleSize / 2;
+      const centerY = circleSize / 2;
+      const angleStep = (2 * Math.PI) / numImages;
+
+      const newPositions = images.map((_, index) => {
+        const angle = index * angleStep;
+        const x = Math.cos(angle) * radius + centerX - 45;
+        const y = Math.sin(angle) * radius + centerY - 45;
+        return { left: `${x}px`, top: `${y}px` };
+      });
+
+      setPositions(newPositions);
+      setLoading(false);
+    }, 2000);
+  }, [images.length, circleSize]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -143,20 +174,26 @@ const About = () => {
 
   return (
     <Section>
-      <LeftContainer>
-        {images.map((src, index) => (
-          <ImageNode
-            key={index}
-            src={src}
-            alt={`about-${index}`}
-            isActive={index === activeIndex}
-            style={{
-              left: positions[index]?.left,
-              top: positions[index]?.top,
-            }}
-          />
-        ))}
+      <LeftContainer size={circleSize}>
+        {loading ? (
+          <Spinner />
+        ) : (
+          images.map((src, index) => (
+            <ImageNode
+              key={index}
+              src={src}
+              alt={`about-${index}`}
+              isActive={index === activeIndex}
+              size={circleSize * 0.2}
+              style={{
+                left: positions[index]?.left,
+                top: positions[index]?.top,
+              }}
+            />
+          ))
+        )}
       </LeftContainer>
+
       <RightContainer>
         <Title>About Me</Title>
         <Text>🎓 A 3rd-year Computer Science and Statistics student at the University of Toronto.</Text>

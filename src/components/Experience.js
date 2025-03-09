@@ -5,26 +5,35 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5%;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 5%;
+  max-width: 73%;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    padding: 5% 0;
+  }
 `;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(40rem, 100%), 1fr));
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   padding: 40px;
 
   @media (max-width: 768px) {
-    padding: 5%;
+    padding: 30px;
   }
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   padding: 30px;
-  margin: 5px;
+  margin: 10px 0;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
@@ -36,7 +45,6 @@ const Card = styled.div`
 
 const HeaderWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -88,7 +96,7 @@ const KeyTakeaway = styled.div`
 
 const TakeawayText = styled.p`
   font-size: 1.2rem;
-  color:rgb(218, 218, 218);
+  color: rgb(218, 218, 218);
   font-weight: bold;
   font-style: italic;
 
