@@ -58,7 +58,7 @@ const Img = styled.img`
 
 const P = styled.p`
   font-size: 1.2rem;
-  margin-top: 10px;
+  margin-top: 16px;
 `;
 
 const projectData = [
