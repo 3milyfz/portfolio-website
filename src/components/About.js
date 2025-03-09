@@ -8,16 +8,16 @@ const Section = styled.section`
   min-height: 100vh;
   padding: 5%;
   color: rgb(210, 212, 199);
-  overflow: hidden;
   max-width: 80%;
   margin: auto;
+  overflow: visible;
 
   @media (max-width: 768px) {
     height: fit-content;
-    padding-bottom: 15%;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    padding-bottom: 20%;
   }
 `;
 
@@ -34,7 +34,8 @@ const LeftContainer = styled.div`
   height: ${({ size }) => size}px;
 
   @media (max-width: 768px) {
-    order: 2;
+    width: ${({ size }) => size * 0.9}px;
+    height: ${({ size }) => size * 0.9}px;
   }
 `;
 
@@ -133,11 +134,11 @@ const About = () => {
   const [positions, setPositions] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 280 : 450);
+  const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 320 : 450);
 
   useEffect(() => {
     const updateSize = () => {
-      setCircleSize(window.innerWidth < 768 ? 280 : 450);
+      setCircleSize(window.innerWidth < 768 ? 320 : 450);
     };
 
     window.addEventListener("resize", updateSize);
