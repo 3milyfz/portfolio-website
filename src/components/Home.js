@@ -25,7 +25,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 150px;
+  font-size: 60px;
   color: rgb(210, 212, 199);
 
   @media only screen and (max-width: 768px) {
@@ -34,7 +34,7 @@ const Title = styled.h1`
 `;
 
 const Text = styled.p`
-  font-size: 30px;
+  font-size: 24px;
   color: rgb(210, 212, 199);
 
   @media only screen and (max-width: 768px) {
@@ -47,8 +47,8 @@ const Home = () => {
     <Section>
         <NavBar/>
         <Container>
-          <Title>Emily Zhou</Title>
-          <Text>A Computer Science student on a journey to <br/> explore and innovate the world of technology.</Text>
+          <Title>Hello, 你好, Bonjour I'm Emily Zhou</Title>
+          <Text>I like bringing people together to build cool things!</Text>
         </Container>
     </Section>
   );
