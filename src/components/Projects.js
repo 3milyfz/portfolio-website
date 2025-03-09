@@ -77,7 +77,7 @@ const projectData = [
   {
     imageSrc: "./img/pw.png",
     link: "https://github.com/3milyfz/portfolio-website",
-    description: "This portfolio website!",
+    description: "This website!",
   },
 ];
 
