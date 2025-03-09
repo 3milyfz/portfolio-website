@@ -25,7 +25,7 @@ const Card = styled.div`
   width: 90%;
   padding: 30px;
   margin: 5px;
-  background: rgba(155, 155, 155, 0.08);
+  background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 16px;
@@ -81,14 +81,14 @@ const Description = styled.p`
 const KeyTakeaway = styled.div`
   margin-top: 20px;
   padding: 15px;
-  background: linear-gradient(135deg, rgba(65, 89, 208, 0.15), rgba(224, 111, 216, 0.1), rgba(255, 212, 132, 0.08));
+  background: linear-gradient(135deg, rgba(65, 89, 208, 0.15), rgba(224, 111, 216, 0.1), rgba(255, 212, 132, 0.1));
   border-left: 5px solid #89c2d9;
   border-radius: 12px;
 `;
 
 const TakeawayText = styled.p`
   font-size: 1.2rem;
-  color:rgb(189, 196, 210);
+  color:rgb(218, 218, 218);
   font-weight: bold;
   font-style: italic;
 
@@ -128,7 +128,7 @@ const experienceData = [
     description:
       "Developed cloud APIs with Azure Functions & TypeScript, integrating Jest tests to enhance reliability for 10,000+ users.",
     takeaway:
-      "My first internship taught me that growth begins where certainty ends—the ability to learn, ask the right questions, and navigate the unknown is the most valuable skill of all.",
+      "My first internship taught me that growth begins where certainty ends—the ability to learn, ask the right questions, and navigate the unknown is the most valuable skill of all!",
   },
 ];
 
