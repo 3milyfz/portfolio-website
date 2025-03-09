@@ -36,6 +36,7 @@ const LeftContainer = styled.div`
   @media (max-width: 768px) {
     width: ${({ size }) => size * 0.85}px;
     height: ${({ size }) => size * 0.85}px;
+    padding-bottom: 10%;
   }
 `;
 
