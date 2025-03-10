@@ -129,7 +129,7 @@ const About = () => {
   );
 
   const [positions, setPositions] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(null); // Start as null to prevent premature enlargement
+  const [activeIndex, setActiveIndex] = useState(null);
   const [isVisible, setIsVisible] = useState(Array(images.length).fill(false));
   const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 300 : 450);
   const [loading, setLoading] = useState(true);
@@ -159,30 +159,33 @@ const About = () => {
       });
 
       setPositions(newPositions);
-      setLoading(false);
 
-      images.forEach((_, i) => {
-        setTimeout(() => {
-          setIsVisible((prev) => {
-            const newVisibility = [...prev];
-            newVisibility[i] = true;
-            return newVisibility;
-          });
-        }, i * 100);
-      });
-
-      // Start cycling only after all images are fully visible
       setTimeout(() => {
-        let index = 0;
-        setActiveIndex(0); // Now, after all images have faded in, start cycling
-        const interval = setInterval(() => {
-          index = (index + 1) % images.length;
-          setActiveIndex(index);
-        }, 2000);
+        setLoading(false);
+        
+        images.forEach((_, i) => {
+          setTimeout(() => {
+            setIsVisible((prev) => {
+              const newVisibility = [...prev];
+              newVisibility[i] = true;
+              return newVisibility;
+            });
+          }, i * 100);
+        });
 
-        return () => clearInterval(interval);
-      }, images.length * 100 + 500);
-    }, 2000);
+        setTimeout(() => {
+          let index = 0;
+          setActiveIndex(0);
+          const interval = setInterval(() => {
+            index = (index + 1) % images.length;
+            setActiveIndex(index);
+          }, 2000);
+
+          return () => clearInterval(interval);
+        }, images.length * 100 + 500);
+      }, 1500);
+
+    }, 500);
   }, [images, images.length, circleSize]);
 
   return (
@@ -196,7 +199,7 @@ const About = () => {
               key={index}
               src={src}
               alt={`about-${index}`}
-              isActive={index === activeIndex && isVisible[index]} // Ensure it's only active after it's visible
+              isActive={index === activeIndex && isVisible[index]}
               size={circleSize * 0.2}
               isVisible={isVisible[index]}
               style={{
@@ -212,7 +215,7 @@ const About = () => {
         <Title>About Me</Title>
         <Text>🎓 A 3rd-year Computer Science and Statistics student at the University of Toronto.</Text>
         <Text>💡 Passionate about bridging people and technology. I'm exploring career paths in product/program management and software development.</Text>
-        <Text>🍽️ Outside of work, I love trying new restaurants and cafés, reading romantasy books, and traveling!</Text>
+        <Text>🍽️ Outside of work, I love trying new restaurants and cafés, reading romantasy and self-help books, and traveling!</Text>
         <Text>✈️ My next adventure? Backpacking through Portugal!!</Text>
       </RightContainer>
     </Section>
