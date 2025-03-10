@@ -154,9 +154,12 @@ const Experience = () => {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          setIsVisible((prevState) =>
-            prevState.map((v, i) => (i === index ? entry.isIntersecting : v))
-          );
+          if (entry.isIntersecting) {
+            setIsVisible((prevState) =>
+              prevState.map((v, i) => (i === index ? true : v)) // Ensures animation only happens once
+            );
+            observer.disconnect(); // Stops observing once triggered
+          }
         },
         { threshold: 0.2 }
       );

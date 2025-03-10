@@ -74,9 +74,11 @@ const ImageNode = styled.img`
   height: ${({ size }) => size}px;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
   cursor: pointer;
-  ${({ isActive }) => isActive && "transform: scale(2.2); z-index: 2;"}
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  transform: ${({ isActive }) => (isActive ? "scale(2.2)" : "scale(1)")};
+  z-index: ${({ isActive }) => (isActive ? 2 : 1)};
 
   @media (max-width: 768px) {
     width: ${({ size }) => size * 0.8}px;
@@ -127,9 +129,10 @@ const About = () => {
   );
 
   const [positions, setPositions] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(null); // Start as null to prevent premature enlargement
+  const [isVisible, setIsVisible] = useState(Array(images.length).fill(false));
   const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 300 : 450);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const updateSize = () => {
@@ -157,16 +160,30 @@ const About = () => {
 
       setPositions(newPositions);
       setLoading(false);
+
+      images.forEach((_, i) => {
+        setTimeout(() => {
+          setIsVisible((prev) => {
+            const newVisibility = [...prev];
+            newVisibility[i] = true;
+            return newVisibility;
+          });
+        }, i * 100);
+      });
+
+      // Start cycling only after all images are fully visible
+      setTimeout(() => {
+        let index = 0;
+        setActiveIndex(0); // Now, after all images have faded in, start cycling
+        const interval = setInterval(() => {
+          index = (index + 1) % images.length;
+          setActiveIndex(index);
+        }, 2000);
+
+        return () => clearInterval(interval);
+      }, images.length * 100 + 500);
     }, 2000);
   }, [images, images.length, circleSize]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
 
   return (
     <Section>
@@ -179,8 +196,9 @@ const About = () => {
               key={index}
               src={src}
               alt={`about-${index}`}
-              isActive={index === activeIndex}
+              isActive={index === activeIndex && isVisible[index]} // Ensure it's only active after it's visible
               size={circleSize * 0.2}
+              isVisible={isVisible[index]}
               style={{
                 left: positions[index]?.left,
                 top: positions[index]?.top,

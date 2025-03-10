@@ -41,7 +41,7 @@ const Card = styled.div`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1.5rem;
   color: rgb(210, 212, 199);
   text-align: center;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
@@ -70,7 +70,7 @@ const Img = styled.img`
 `;
 
 const P = styled.p`
-  font-size: clamp(1rem, 2vw, 1.3rem); /* Scales dynamically */
+  font-size: clamp(1rem, 2vw, 1.2rem);
   margin-top: 1rem;
 `;
 
@@ -104,9 +104,12 @@ const Projects = () => {
 
       const observer = new IntersectionObserver(
         ([entry]) => {
-          setIsVisible((prevState) =>
-            prevState.map((v, i) => (i === index ? entry.isIntersecting : v))
-          );
+          if (entry.isIntersecting) {
+            setIsVisible((prevState) =>
+              prevState.map((v, i) => (i === index ? true : v))
+            );
+            observer.disconnect();
+          }
         },
         { threshold: 0.2 }
       );
