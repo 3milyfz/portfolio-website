@@ -215,7 +215,7 @@ const About = () => {
         <Title>About Me</Title>
         <Text>🎓 A 3rd-year Computer Science and Statistics student at the University of Toronto.</Text>
         <Text>💡 Passionate about bridging people and technology. I'm exploring career paths in product/program management and software development.</Text>
-        <Text>🍽️ Outside of work, I love trying new restaurants and cafés, reading romantasy and self-help books, and traveling!</Text>
+        <Text>🍽️ Outside of work, I love trying new restaurants and cafés, reading romantasy and self help books, and traveling!</Text>
         <Text>✈️ My next adventure? Backpacking through Portugal!!</Text>
       </RightContainer>
     </Section>
