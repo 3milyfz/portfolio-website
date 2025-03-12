@@ -120,7 +120,7 @@ const experienceData = [
     description:
       "Automated warehouse access with Postman, optimized alerts with IBM Cognos, and authored technical docs to streamline operations.",
     takeaway:
-      "Chick-fil-A’s mission to be the world’s most caring company taught me that work is more than efficiency—it’s about stewardship, ownership, and finding fulfillment in serving others.",
+      "Chick-fil-A’s mission to be the world’s most caring company taught me that work is more than efficiency, it’s about stewardship, ownership, and finding fulfillment in serving others.",
   },
   {
     title: "Software Developer Intern",
@@ -140,7 +140,7 @@ const experienceData = [
     description:
       "Developed cloud APIs with Azure Functions & TypeScript, integrating Jest tests to enhance reliability for 10,000+ users.",
     takeaway:
-      "My first internship taught me that growth begins where certainty ends—the ability to learn, ask the right questions, and navigate the unknown is the most valuable skill of all!",
+      "My first internship taught me that growth begins where certainty ends, the ability to learn, ask the right questions, and navigate the unknown is the most valuable skill of all!",
   },
 ];
 
