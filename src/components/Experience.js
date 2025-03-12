@@ -130,7 +130,7 @@ const experienceData = [
     description:
       "Processed EEG data using Pandas, optimized pipelines for large datasets, and built interactive React charts for researchers.",
     takeaway:
-      "Startup life taught me that progress favors the adaptable—embracing uncertainty, wearing many hats, and moving fast is how innovation happens.",
+      "Startup life taught me that progress favors the adaptable, embracing uncertainty, wearing many hats, and moving fast is how innovation happens.",
   },
   {
     title: "Software Developer Intern",
