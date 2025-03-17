@@ -31,11 +31,11 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2rem, 4vw, 3rem); 
+  font-size: clamp(2rem, 4vw, 2.5rem); 
   font-weight: 500;
   color: rgb(210, 212, 199);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const Form = styled.form`
@@ -53,7 +53,7 @@ const Input = styled.input`
   padding: 1rem;
   border: none;
   border-radius: 15px;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
 
   @media (max-width: 768px) {
     padding: 0.8rem;
@@ -65,7 +65,7 @@ const TextArea = styled.textarea`
   border: none;
   border-radius: 15px;
   font-family: "Google Sans", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
 
   @media (max-width: 768px) {
     padding: 0.8rem;
@@ -77,7 +77,7 @@ const Button = styled.button`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-family: "Google Sans", sans-serif;
   color: white;
   border: none;
@@ -97,7 +97,7 @@ const Button = styled.button`
 `;
 
 const P = styled.p`
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   color: rgb(210, 212, 199);
   text-align: center;
   margin-top: 1rem;

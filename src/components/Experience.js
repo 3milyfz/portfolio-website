@@ -61,13 +61,13 @@ const HeaderWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: #fff;
   margin: 0;
 `;
 
 const Company = styled.h3`
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: #b0b0b0;
   margin: 0.3rem 0;
 `;
@@ -75,7 +75,7 @@ const Company = styled.h3`
 const DateLocationWrapper = styled.div`
   display: flex;
   align-items: center;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   color: #b0b0b0;
   gap: 10px;
 
@@ -86,21 +86,21 @@ const DateLocationWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   color: rgb(210, 212, 199);
   margin-top: 1rem;
 `;
 
 const KeyTakeaway = styled.div`
   margin-top: 1.5rem;
-  padding: 1.2rem;
+  padding: 1rem;
   background: linear-gradient(135deg, rgba(65, 89, 208, 0.15), rgba(224, 111, 216, 0.1), rgba(255, 212, 132, 0.1));
   border-left: 5px solid #89c2d9;
   border-radius: 12px;
 `;
 
 const TakeawayText = styled.p`
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   color: rgb(218, 218, 218);
   font-weight: bold;
   font-style: italic;

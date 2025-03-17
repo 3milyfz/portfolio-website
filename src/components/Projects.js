@@ -70,7 +70,7 @@ const Img = styled.img`
 `;
 
 const P = styled.p`
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   margin-top: 1rem;
 `;
 

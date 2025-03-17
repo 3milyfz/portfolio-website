@@ -41,7 +41,7 @@ const SearchBar = styled.div`
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.6);
-  padding: 1rem 1rem;
+  padding: 0.8rem;
   border-radius: 30px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: 97%;
@@ -137,7 +137,7 @@ const ResultTitle = styled.a`
 `;
 
 const ResultText = styled.p`
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   line-height: 1.6;
   color: rgb(0, 0, 0);
   margin-top: 0.2rem;
