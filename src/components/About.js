@@ -1,223 +1,270 @@
-import React, { useState, useEffect, useMemo } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 const Section = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 100vh;
-  padding: 5%;
-  color: rgb(210, 212, 199);
-  max-width: 1200px;
-  margin: auto;
-  overflow: visible;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    padding-bottom: 10%;
-  }
-`;
-
-const LeftContainer = styled.div`
-  flex: 1;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  border-radius: 50%;
-  overflow: visible;
-
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
+  min-height: 100vh;
+  width: 73%;
+  margin: auto;
+  text-align: center;
 
   @media (max-width: 768px) {
-    width: ${({ size }) => size * 0.85}px;
-    height: ${({ size }) => size * 0.85}px;
-    padding-bottom: 10%;
+    padding: 5% 0;
   }
 `;
 
-const RightContainer = styled.div`
-  flex: 1;
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: left;
-  gap: 1rem;
-  padding-left: 3%;
-  max-width: 550px;
+  align-items: center;
+  width: 100%;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  transform: translateY(${({ isVisible }) => (isVisible ? "0" : "30px")});
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow: hidden;
 
   @media (max-width: 768px) {
-    padding-left: 0;
-    align-items: center;
-    text-align: center;
+    padding: 1.5rem;
   }
 `;
 
-const Title = styled.h1`
-  font-size: clamp(2rem, 5vw, 3.75rem);
-  font-weight: bold;
-  color: rgb(241, 240, 240);
+const SearchBar = styled.div`
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1rem 1rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 97%;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
 `;
 
-const Text = styled.p`
+const SearchIcon = styled.span`
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+`;
+
+const NavBar = styled.div`
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+
+  @media (min-width: 600px) {
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 800px) {
+    gap: 2rem;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 3rem;
+  }
+`;
+
+const NavItem = styled.span`
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  background: ${({ isActive }) => (isActive ? "rgba(255, 255, 255, 0.2)" : "transparent")};
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+`;
+
+const SearchResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
+
+const ResultCard = styled.div`
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.55);
+  }
+`;
+
+const ResultURL = styled.span`
+  font-size: 0.9rem;
+  color: rgb(73, 73, 73);
+  display: block;
+  margin-bottom: 0.2rem;
+`;
+
+const ResultTitle = styled.a`
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a0dab;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const ResultText = styled.p`
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   line-height: 1.6;
-  color: rgb(210, 212, 199);
+  color: rgb(0, 0, 0);
+  margin-top: 0.2rem;
 `;
 
-const ImageNode = styled.img`
-  position: absolute;
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
-  border-radius: 50%;
+const ImageGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
+
+const ImageItem = styled.img`
+  width: 100%;
+  height: 11rem;
   object-fit: cover;
-  transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+  border-radius: 8px;
   cursor: pointer;
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: ${({ isActive }) => (isActive ? "scale(2.2)" : "scale(1)")};
-  z-index: ${({ isActive }) => (isActive ? 2 : 1)};
+  transition: transform 0.2s ease-in-out;
 
-  @media (max-width: 768px) {
-    width: ${({ size }) => size * 0.8}px;
-    height: ${({ size }) => size * 0.8}px;
+  &:hover {
+    transform: scale(1.05);
   }
-`;
-
-const spin = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
-const Spinner = styled.div`
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
-  border-top: 5px solid #ffffff;
-  border-radius: 50%;
-  animation: ${spin} 1s linear infinite;
-  position: absolute;
 `;
 
 const About = () => {
-  const images = useMemo(
-    () => [
-      "/img/img_net/1.jpg",
-      "/img/img_net/11.jpg",
-      "/img/img_net/2.jpg",
-      "/img/img_net/3.jpg",
-      "/img/img_net/4.jpg",
-      "/img/img_net/19.jpg",
-      "/img/img_net/20.jpg",
-      "/img/img_net/6.jpg",
-      "/img/img_net/5.jpg",
-      "/img/img_net/9.jpg",
-      "/img/img_net/12.jpg",
-      "/img/img_net/15.jpg",
-      "/img/img_net/16.jpg",
-      "/img/img_net/8.jpg",
-      "/img/img_net/18.jpg",
-      "/img/img_net/22.jpg",
-      "/img/img_net/10.jpg",
-      "/img/img_net/13.jpg",
-      "/img/img_net/21.jpg",
-      "/img/img_net/7.jpg",
-    ],
-    []
-  );
-
-  const [positions, setPositions] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [isVisible, setIsVisible] = useState(Array(images.length).fill(false));
-  const [circleSize, setCircleSize] = useState(window.innerWidth < 768 ? 300 : 450);
-  const [loading, setLoading] = useState(true);
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("All");
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const updateSize = () => {
-      setCircleSize(window.innerWidth < 768 ? 300 : 450);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
 
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      const numImages = images.length;
-      const radius = circleSize / 2 - 50;
-      const centerX = circleSize / 2;
-      const centerY = circleSize / 2;
-      const angleStep = (2 * Math.PI) / numImages;
+    if (activeTab === "Images") {
+      const imageContext = require.context("../../public/img/img_net/", false, /\.(png|jpe?g|svg|heic)$/);
+      const imagePaths = imageContext.keys().map(imageContext);
+      setImages(imagePaths);
+    }
+  }, [activeTab]);
 
-      const newPositions = images.map((_, index) => {
-        const angle = index * angleStep;
-        const x = Math.cos(angle) * radius + centerX - 45;
-        const y = Math.sin(angle) * radius + centerY - 45;
-        return { left: `${x}px`, top: `${y}px` };
-      });
-
-      setPositions(newPositions);
-
-      setTimeout(() => {
-        setLoading(false);
-        
-        images.forEach((_, i) => {
-          setTimeout(() => {
-            setIsVisible((prev) => {
-              const newVisibility = [...prev];
-              newVisibility[i] = true;
-              return newVisibility;
-            });
-          }, i * 100);
-        });
-
-        setTimeout(() => {
-          let index = 0;
-          setActiveIndex(0);
-          const interval = setInterval(() => {
-            index = (index + 1) % images.length;
-            setActiveIndex(index);
-          }, 2000);
-
-          return () => clearInterval(interval);
-        }, images.length * 100 + 500);
-      }, 1500);
-
-    }, 500);
-  }, [images, images.length, circleSize]);
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
 
   return (
     <Section>
-      <LeftContainer size={circleSize}>
-        {loading ? (
-          <Spinner />
-        ) : (
-          images.map((src, index) => (
-            <ImageNode
-              key={index}
-              src={src}
-              alt={`about-${index}`}
-              isActive={index === activeIndex && isVisible[index]}
-              size={circleSize * 0.2}
-              isVisible={isVisible[index]}
-              style={{
-                left: positions[index]?.left,
-                top: positions[index]?.top,
-              }}
-            />
-          ))
+      <Container ref={containerRef} isVisible={isVisible}>
+        <SearchBar>
+          <SearchIcon>🔍</SearchIcon>
+          Who is Emily?
+        </SearchBar>
+        <NavBar>
+          {["All", "Images", "News", "More"].map((tab) => (
+            <NavItem
+              key={tab}
+              isActive={activeTab === tab}
+              onClick={() => handleTabClick(tab)}
+            >
+              {tab}
+            </NavItem>
+          ))}
+        </NavBar>
+        {activeTab === "All" && (
+          <SearchResults>
+            <ResultCard>
+              <ResultURL>https://defygravitycampaign.utoronto.ca/news-and-stories/u-of-ts-2021-schulich-leaders</ResultURL>
+              <ResultTitle
+                href="https://defygravitycampaign.utoronto.ca/news-and-stories/u-of-ts-2021-schulich-leaders-building-tech-solutions-for-an-inclusive-future/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Schulich Leader Scholar at UofT
+              </ResultTitle>
+              <ResultText>
+                Emily is a 3rd-year Computer Science and Statistics student at the University of Toronto.
+              </ResultText>
+            </ResultCard>
+            <ResultCard>
+              <ResultURL>https://www.linkedin.com/in/emily-fz</ResultURL>
+              <ResultTitle href="#" target="_blank" rel="noopener noreferrer">People & Tech</ResultTitle>
+              <ResultText>She is passionate about bridging the gap between people and technology and is exploring careers in product/program management and software development.</ResultText>
+            </ResultCard>
+            <ResultCard>
+              <ResultURL>https://www.goodreads.com/emeads</ResultURL>
+              <ResultTitle href="https://www.goodreads.com/emeads" target="_blank" rel="noopener noreferrer">Emily’s Goodreads</ResultTitle>
+              <ResultText>When she's not grinding, she’s checking out new cafés and lounges, reading romantasy and personal growth books, watching anime, or planning her next trip. She's currently hooked on the show <i>Invincible</i>.</ResultText>
+            </ResultCard>
+          </SearchResults>
         )}
-      </LeftContainer>
-
-      <RightContainer>
-        <Title>About Me</Title>
-        <Text>🎓 A 3rd-year Computer Science and Statistics student at the University of Toronto.</Text>
-        <Text>💡 Passionate about bridging people and technology. I'm exploring career paths in product/program management and software development.</Text>
-        <Text>🍽️ Outside of work, I love trying new restaurants and cafés, reading romantasy and self help books, and traveling!</Text>
-        <Text>✈️ My next adventure? Backpacking through Portugal!!</Text>
-      </RightContainer>
+        {activeTab === "Images" && (
+          <ImageGrid>
+            {images.map((src, index) => (
+              <ImageItem
+                key={index}
+                src={src}
+                alt={`Emily ${index + 1}`}
+              />
+            ))}
+          </ImageGrid>
+        )}
+        {["News", "More"].includes(activeTab) && (
+          <SearchResults>
+            <ResultCard>
+              <ResultText>Oops, there's nothing here yet! {activeTab} is on the way.</ResultText>
+            </ResultCard>
+          </SearchResults>
+        )}
+      </Container>
     </Section>
   );
 };

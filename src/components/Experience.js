@@ -8,6 +8,7 @@ const Section = styled.div`
   justify-content: center;
   min-height: 100vh;
   padding: 5%;
+  padding-top: 10%;
   max-width: 73%;
   margin: auto;
 
