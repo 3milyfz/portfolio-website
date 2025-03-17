@@ -250,7 +250,7 @@ const About = () => {
             <ResultCard>
               <ResultURL>https://www.goodreads.com/emeads</ResultURL>
               <ResultTitle href="https://www.goodreads.com/emeads" target="_blank" rel="noopener noreferrer">if he's invincible, why can't i see him</ResultTitle>
-              <ResultText>When she's not grinding, she’s checking out new cafés and lounges, reading romantasy and personal growth books, watching anime, or planning her next trip. She's currently hooked on the show <i>Invincible</i>.</ResultText>
+              <ResultText>When she's not grinding, she’s checking out new cafés and lounges, reading romantasy and personal growth books, watching anime, or planning her next trip. She also really likes the show <i>Invincible</i>.</ResultText>
             </ResultCard>
           </SearchResults>
         )}
