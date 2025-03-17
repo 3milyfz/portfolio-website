@@ -63,16 +63,29 @@ const NavLinksContainer = styled.div`
   align-items: flex-start;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.button`
   font-size: clamp(32px, 5vh, 50px);
   color: rgb(210, 212, 199);
+  background: none;
+  border: none;
   text-decoration: none;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.5s ease;
 
   &:hover {
     color: #555;
+    transform: scale(1.05);
   }
 `;
+
+// Smooth scrolling function
+const scrollToSection = (id, toggleNav) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    toggleNav(); // Close navbar after clicking
+  }
+};
 
 const SideNavbar = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -87,11 +100,11 @@ const SideNavbar = () => {
       <SideNav isVisible={isNavVisible}>
         <CloseButton onClick={toggleNav}>×</CloseButton>
         <NavLinksContainer>
-          <NavLink href="#home" onClick={toggleNav}>Home</NavLink>
-          <NavLink href="#about" onClick={toggleNav}>About</NavLink>
-          <NavLink href="#experience" onClick={toggleNav}>Experience</NavLink>
-          <NavLink href="#projects" onClick={toggleNav}>Projects</NavLink>
-          <NavLink href="#contact" onClick={toggleNav}>Contact</NavLink>
+          <NavLink onClick={() => scrollToSection("home", toggleNav)}>Home</NavLink>
+          <NavLink onClick={() => scrollToSection("about", toggleNav)}>About</NavLink>
+          <NavLink onClick={() => scrollToSection("experience", toggleNav)}>Experience</NavLink>
+          <NavLink onClick={() => scrollToSection("projects", toggleNav)}>Projects</NavLink>
+          <NavLink onClick={() => scrollToSection("contact", toggleNav)}>Contact</NavLink>
         </NavLinksContainer>
       </SideNav>
     </>

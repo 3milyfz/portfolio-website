@@ -47,6 +47,7 @@ const Card = styled.div`
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transform: translateY(${({ isVisible }) => (isVisible ? "0" : "30px")});
   transition: opacity 0.5s ease, transform 0.5s ease;
+  cursor: pointer;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.12);
@@ -59,14 +60,9 @@ const Card = styled.div`
 `;
 
 const Img = styled.img`
-  cursor: pointer;
   width: 100%;
   border-radius: 20px;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
 
 const P = styled.p`
@@ -125,8 +121,8 @@ const Projects = () => {
     <Section>
       <Container>
         {projectData.map((project, index) => (
-          <Card key={index} ref={cardRefs.current[index]} isVisible={isVisible[index]}>
-            <Img src={project.imageSrc} onClick={() => window.open(project.link)} />
+          <Card key={index} ref={cardRefs.current[index]} isVisible={isVisible[index]} onClick={() => window.open(project.link)}>
+            <Img src={project.imageSrc} />
             <P>{project.description}</P>
           </Card>
         ))}

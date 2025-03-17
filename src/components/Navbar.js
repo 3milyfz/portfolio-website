@@ -40,6 +40,11 @@ const Img = styled.img`
   width: 40px;
   height: 40px;
   cursor: pointer;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 const Me = styled.img`
@@ -47,6 +52,20 @@ const Me = styled.img`
   height: 50px;
   border-radius: 50%;
   padding: 20px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    animation: bounce 0.8s infinite ease-in-out;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 `;
 
 const NavBar = () => {
