@@ -18,7 +18,7 @@ const Container = styled.div`
 
 const Text = styled.p`
   color: rgb(210, 212, 199);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1rem);
   margin: 0;
   padding-right: 20px;
 
