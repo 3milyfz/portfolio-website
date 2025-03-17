@@ -217,7 +217,7 @@ const About = () => {
           />
         </SearchBar>
         <NavBar>
-          {["All", "Images", "News", "More"].map((tab) => (
+          {["All", "Images", "News", "⋮ More"].map((tab) => (
             <NavItem
               key={tab}
               isActive={activeTab === tab}
