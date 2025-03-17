@@ -236,7 +236,7 @@ const About = () => {
             </ResultCard>
             <ResultCard>
               <ResultURL>https://www.linkedin.com/in/emily-fz</ResultURL>
-              <ResultTitle href="#" target="_blank" rel="noopener noreferrer">People & Tech</ResultTitle>
+              <ResultTitle href="https://www.linkedin.com/in/emily-fz" target="_blank" rel="noopener noreferrer">Exploring Careers in Tech and Product</ResultTitle>
               <ResultText>She is passionate about bridging the gap between people and technology and is exploring careers in product/program management and software development.</ResultText>
             </ResultCard>
             <ResultCard>
