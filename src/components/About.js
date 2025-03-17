@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import Typewriter from 'typewriter-effect';
 
 const Section = styled.section`
   display: flex;
@@ -206,7 +207,14 @@ const About = () => {
       <Container ref={containerRef} isVisible={isVisible}>
         <SearchBar>
           <SearchIcon>🔍</SearchIcon>
-          Who is Emily?
+          <Typewriter
+            options={{
+              strings: ['Who is Emily?'],
+              autoStart: true,
+              loop: true,
+              delay: 200,
+            }}
+          />
         </SearchBar>
         <NavBar>
           {["All", "Images", "News", "More"].map((tab) => (
