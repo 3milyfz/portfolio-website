@@ -46,6 +46,10 @@ const Card = styled.div`
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 const HeaderWrapper = styled.div`
