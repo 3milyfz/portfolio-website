@@ -43,7 +43,7 @@ const SideNav = styled.div`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(40px);
   z-index: 1000;
-  transition: left 0.6s ease-in-out;
+  transition: left 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
