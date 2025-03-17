@@ -265,14 +265,14 @@ const About = () => {
             ))}
           </ImageGrid>
         )}
-        {activeTab == "News" && (
+        {activeTab === "News" && (
           <SearchResults>
             <ResultCard>
               <ResultText>Oops, there's nothing here yet! {activeTab} is on the way.</ResultText>
             </ResultCard>
           </SearchResults>
         )}
-        {activeTab == "⋮ More" && (
+        {activeTab === "⋮ More" && (
           <SearchResults>
             <ResultCard>
               <ResultText>Oops, there's nothing here yet! More is on the way.</ResultText>
