@@ -8,12 +8,11 @@ const Section = styled.div`
   justify-content: center;
   min-height: 100vh;
   padding: 5%;
-  max-width: 80%;
+  max-width: 73%;
   margin: auto;
 
   @media (max-width: 768px) {
     padding: 5% 0;
-    max-width: 80%;
   }
 `;
 
@@ -23,6 +22,7 @@ const Container = styled.div`
   gap: 2rem;
   padding: 1.5rem;
   width: 100%;
+  justify-content: center;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -30,7 +30,9 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -55,7 +57,7 @@ const Card = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 `;
 
@@ -66,8 +68,12 @@ const Img = styled.img`
 `;
 
 const P = styled.p`
-  font-size: clamp(1rem, 2vw, 1rem);
+  font-size: clamp(1rem, 2vw, 1.1rem);
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const projectData = [

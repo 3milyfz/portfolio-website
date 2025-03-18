@@ -33,7 +33,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
   margin: 1rem 0;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -44,7 +44,7 @@ const Card = styled.div`
   transition: opacity 0.5s ease, transform 0.5s ease;
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    width: 80%;
   }
 
   &:hover {
@@ -74,6 +74,10 @@ const Company = styled.h3`
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: #b0b0b0;
   margin: 0.3rem 0;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const DateLocationWrapper = styled.div`
@@ -86,6 +90,7 @@ const DateLocationWrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
+    font-size: 0.9rem;
   }
 `;
 
@@ -93,6 +98,10 @@ const Description = styled.p`
   font-size: clamp(1rem, 2vw, 1rem);
   color: rgb(210, 212, 199);
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const KeyTakeaway = styled.div`
@@ -113,6 +122,10 @@ const TakeawayText = styled.p`
     color: rgb(253, 255, 153);
     font-weight: bold;
     margin-right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
   }
 `;
 

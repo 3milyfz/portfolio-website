@@ -22,7 +22,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 3rem;
+  padding: 2.5rem;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
@@ -34,6 +34,7 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 1.5rem;
+    width: 90%;
   }
 `;
 
@@ -48,6 +49,11 @@ const SearchBar = styled.div`
   margin-bottom: 1rem;
   font-size: 1.2rem;
   color: rgb(0, 0, 0);
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
 `;
 
 const SearchIcon = styled.span`
@@ -68,7 +74,7 @@ const NavBar = styled.div`
   padding-bottom: 0.5rem;
 
   @media (min-width: 600px) {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   @media (min-width: 800px) {
@@ -89,6 +95,11 @@ const NavItem = styled.span`
 
   &:hover {
     background: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -121,6 +132,10 @@ const ResultURL = styled.span`
   color: rgb(73, 73, 73);
   display: block;
   margin-bottom: 0.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const ResultTitle = styled.a`
@@ -134,6 +149,10 @@ const ResultTitle = styled.a`
   &:hover {
     text-decoration: underline;
   }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const ResultText = styled.p`
@@ -141,6 +160,10 @@ const ResultText = styled.p`
   line-height: 1.6;
   color: rgb(0, 0, 0);
   margin-top: 0.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const ImageGrid = styled.div`

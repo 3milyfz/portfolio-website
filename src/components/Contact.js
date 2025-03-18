@@ -56,7 +56,8 @@ const Input = styled.input`
   font-size: clamp(1rem, 2vw, 1rem);
 
   @media (max-width: 768px) {
-    padding: 0.8rem;
+    padding: 0.7rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -68,7 +69,8 @@ const TextArea = styled.textarea`
   font-size: clamp(1rem, 2vw, 1rem);
 
   @media (max-width: 768px) {
-    padding: 0.8rem;
+    padding: 0.7rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -92,7 +94,8 @@ const Button = styled.button`
   }
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 0.7rem;
+    font-size: 0.9rem;
   }
 `;
 
