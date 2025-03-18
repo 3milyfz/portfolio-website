@@ -44,7 +44,7 @@ const Card = styled.div`
   transition: opacity 0.5s ease, transform 0.5s ease;
 
   @media (max-width: 768px) {
-    width: 80%;
+    width: 90%;
   }
 
   &:hover {

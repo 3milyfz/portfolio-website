@@ -57,12 +57,13 @@ const Card = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 `;
 
 const Img = styled.img`
   width: 100%;
+  object-fit: cover;
   border-radius: 20px;
   transition: transform 0.3s ease;
 `;
