@@ -7,24 +7,30 @@ const Container = styled.div`
   width: 100%;
   padding: 10px 0px;
   background-color: black;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 1000;
 
   @media only screen and (max-width: 768px) {
+    flex-direction: column;
     text-align: center;
-    padding: 10px;
+    gap: 5px;
   }
 `;
 
-const Text = styled.p`
+const LeftText = styled.p`
+  color: rgb(210, 212, 199);
+  font-size: clamp(1rem, 2vw, 1rem);
+  margin: 0;
+  padding-left: 20px;
+`;
+
+const RightText = styled.p`
   color: rgb(210, 212, 199);
   font-size: clamp(1rem, 2vw, 1rem);
   margin: 0;
   padding-right: 20px;
-
-  @media only screen and (max-width: 768px) {
-    padding-right: 0;
-  }
 `;
 
 const Copyright = () => {
@@ -32,7 +38,8 @@ const Copyright = () => {
 
   return (
     <Container>
-      <Text>© Emily Zhou {currentYear}</Text>
+      <LeftText>Made with ♡ ̆̈ !</LeftText>
+      <RightText>© Emily Zhou {currentYear}</RightText>
     </Container>
   );
 };

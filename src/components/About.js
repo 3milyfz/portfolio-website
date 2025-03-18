@@ -209,10 +209,10 @@ const About = () => {
           <SearchIcon>🔍</SearchIcon>
           <Typewriter
             options={{
-              strings: ['Who is Emily?'],
+              strings: ['So... who\'s Emily?'],
               autoStart: true,
               loop: true,
-              delay: 200,
+              delay: 100,
             }}
           />
         </SearchBar>
@@ -249,8 +249,8 @@ const About = () => {
             </ResultCard>
             <ResultCard>
               <ResultURL>https://www.goodreads.com/emeads</ResultURL>
-              <ResultTitle href="https://www.goodreads.com/emeads" target="_blank" rel="noopener noreferrer">if he's invincible, why can't i see him</ResultTitle>
-              <ResultText>When she's not grinding, she’s checking out new cafés and lounges, reading romantasy and personal growth books, watching anime, or planning her next trip (Portugal is up next!). She also really likes the show <i>Invincible</i>.</ResultText>
+              <ResultTitle href="https://www.goodreads.com/emeads" target="_blank" rel="noopener noreferrer">if he's invincible, why can't i see him ಥ‿ಥ</ResultTitle>
+              <ResultText>When she's not working, she’s checking out new cafés and lounges, reading romantasy and personal growth books, watching anime, or planning her next trip (Portugal is up next!). She also really likes the show <i>Invincible</i>.</ResultText>
             </ResultCard>
           </SearchResults>
         )}
