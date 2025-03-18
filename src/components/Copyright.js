@@ -13,9 +13,7 @@ const Container = styled.div`
   z-index: 1000;
 
   @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    gap: 5px;
+    flex-direction: row;
   }
 `;
 
@@ -38,7 +36,7 @@ const Copyright = () => {
 
   return (
     <Container>
-      <LeftText>Made with ♡ ̆̈ !</LeftText>
+      <LeftText>Made with ♡ ̆̈</LeftText>
       <RightText>© Emily Zhou {currentYear}</RightText>
     </Container>
   );
