@@ -88,12 +88,18 @@ const projectData = [
     imageSrc: "./img/tces.png",
     link: "https://github.com/uoftblueprint/tces",
     description:
-      "A customer relationship management application for Toronto Community Employment Services.",
+      "A customer relationship management web app for Toronto Community Employment Services to connect job seekers with employers.",
+  },
+  {
+    imageSrc: "./img/cfd.png",
+    link: "https://github.com/uoftblueprint/centre-for-dreams",
+    description:
+      "A mobile and web app to help the Center for Dreams plan events, track attendance, and keep everyone in the loop.",
   },
   {
     imageSrc: "./img/pw.png",
     link: "https://github.com/3milyfz/portfolio-website",
-    description: "This website!",
+    description: "You're looking at it! Built to share my work and say hello.",
   },
 ];
 
