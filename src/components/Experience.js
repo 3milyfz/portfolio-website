@@ -131,6 +131,16 @@ const TakeawayText = styled.p`
 
 const experienceData = [
   {
+    title: "Software Engineer Intern",
+    company: "Rippling",
+    location: "San Francisco, CA",
+    date: "Incoming May 2025",
+    description:
+      "Global Payroll Onboarding Team 👀",
+    takeaway:
+      "Come back in August...",
+  },
+  {
     title: "Systems Analyst Intern",
     company: "Chick-fil-A Corporate",
     location: "Atlanta, GA",
