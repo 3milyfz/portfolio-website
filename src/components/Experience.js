@@ -136,7 +136,7 @@ const experienceData = [
     location: "San Francisco, CA",
     date: "Incoming May 2025",
     description:
-      "Global Payroll Onboarding Team 👀",
+      "Global Payroll Onboarding Team 🤑",
     takeaway:
       "Come back in August...",
   },
