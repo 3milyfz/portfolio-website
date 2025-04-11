@@ -135,7 +135,7 @@ const Contact = () => {
   return (
     <Section>
       <Container>
-        <Title>Contact Me</Title>
+        <Title>Let's Connect 💌</Title>
         <Form ref={ref} onSubmit={handleSubmit}>
           <Input placeholder="Name" name="name" required />
           <Input type="email" placeholder="Email" name="email" required />
