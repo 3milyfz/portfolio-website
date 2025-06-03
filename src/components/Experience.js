@@ -134,7 +134,7 @@ const experienceData = [
     title: "Software Engineer Intern",
     company: "Rippling",
     location: "San Francisco, CA",
-    date: "Incoming May 2025",
+    date: "May 2025 - Present",
     description:
       "Global Payroll Onboarding Team 🤑",
     takeaway:
