@@ -262,7 +262,7 @@ const About = () => {
                 Schulich Leader Scholar at UofT
               </ResultTitle>
               <ResultText>
-                Emily is a 3rd-year Computer Science and Statistics student at the University of Toronto.
+                Emily is a 3rd-year Computer Science student at the University of Toronto.
               </ResultText>
             </ResultCard>
             <ResultCard>
