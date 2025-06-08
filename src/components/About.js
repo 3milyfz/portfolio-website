@@ -215,9 +215,13 @@ const About = () => {
 
   useEffect(() => {
     if (activeTab === "Images") {
-      const imageContext = require.context("../../public/img/img_net/", false, /\.(png|jpe?g|svg|heic)$/);
-      const imagePaths = imageContext.keys().map(imageContext);
-      setImages(imagePaths);
+      try {
+        const imagePaths = Array.from({ length: 36 }, (_, i) => `/img/img_net/${i + 1}.jpg`);
+        console.log('Loading images:', imagePaths);
+        setImages(imagePaths);
+      } catch (error) {
+        console.error('Error in image loading:', error);
+      }
     }
   }, [activeTab]);
 
@@ -259,7 +263,7 @@ const About = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Schulich Leader Scholar at UofT
+                Schulich Leader Scholar 🤓
               </ResultTitle>
               <ResultText>
                 Emily is a 3rd-year Computer Science student at the University of Toronto.
@@ -267,13 +271,18 @@ const About = () => {
             </ResultCard>
             <ResultCard>
               <ResultURL>https://www.linkedin.com/in/emily-fz</ResultURL>
-              <ResultTitle href="https://www.linkedin.com/in/emily-fz" target="_blank" rel="noopener noreferrer">Exploring Careers in Tech and Product</ResultTitle>
-              <ResultText>She is passionate about bridging the gap between people and technology and is exploring careers in product/program management and software development.</ResultText>
+              <ResultTitle href="https://www.linkedin.com/in/emily-fz" target="_blank" rel="noopener noreferrer">Exploring Tech, Product, and What Comes Next</ResultTitle>
+              <ResultText>From automating warehouse workflows at Chick-fil-A to building payroll onboaring solutions at Rippling, she's interested in building thoughtful software and figuring out what a meaningful career in tech looks like.</ResultText>
+            </ResultCard>
+            <ResultCard>
+              <ResultURL>https://beliapp.co/app/stoopidchzcat</ResultURL>
+              <ResultTitle href="https://beliapp.co/app/stoopidchzcat" target="_blank" rel="noopener noreferrer">Beli Grind 😤</ResultTitle>
+              <ResultText>A so-called "foodie", she recently joined Beli to keep track of her go-to cafés, coffee spots, and favorite eats.</ResultText>
             </ResultCard>
             <ResultCard>
               <ResultURL>https://www.goodreads.com/emeads</ResultURL>
-              <ResultTitle href="https://www.goodreads.com/emeads" target="_blank" rel="noopener noreferrer">if he's invincible, why can't i see him ಥ‿ಥ</ResultTitle>
-              <ResultText>When she's not working, she’s checking out new cafés and lounges, reading romantasy and personal growth books, watching anime, or planning her next trip (she just did her first ever solo backpacking trip to Portugal!). She also really likes the show <i>Invincible</i>.</ResultText>
+              <ResultTitle href="https://www.goodreads.com/emeads" target="_blank" rel="noopener noreferrer">Goodreads!</ResultTitle>
+              <ResultText>What she's been reading? Mainly romantasy and books that make you pause and rethink things (in a good way).</ResultText>
             </ResultCard>
           </SearchResults>
         )}
@@ -284,6 +293,10 @@ const About = () => {
                 key={index}
                 src={src}
                 alt={`Emily ${index + 1}`}
+                onError={(e) => {
+                  console.error(`Failed to load image: ${src}`);
+                  e.target.style.display = 'none';
+                }}
               />
             ))}
           </ImageGrid>

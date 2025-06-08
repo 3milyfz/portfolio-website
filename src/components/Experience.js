@@ -136,7 +136,7 @@ const experienceData = [
     location: "San Francisco, CA",
     date: "May 2025 - Present",
     description:
-      "Global Payroll Onboarding Team 🤑",
+      "Developing workflows for global payroll onboarding across 185+ countries using Python, Django, MongoEngine, and a TypeScript-React frontend.",
     takeaway:
       "Come back in August...",
   },
